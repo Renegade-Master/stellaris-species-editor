@@ -11,7 +11,6 @@ group = "com.renegademaster"
 version = "1.0"
 
 repositories {
-    jcenter()
     mavenCentral()
     maven { url = uri("https://maven.pkg.jetbrains.space/public/p/compose/dev") }
 }
@@ -38,6 +37,25 @@ compose.desktop {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "stellaris-species-editor"
             packageVersion = "1.0.0"
+        }
+    }
+}
+
+allprojects {
+    afterEvaluate {
+        // This is required to stop builds failing due to the constantly changing nature of working with Jetbrains Desktop Compose
+        tasks.withType<KotlinCompile> {
+            kotlinOptions {
+                if (configurations.findByName("kotlinCompilerPluginClasspath")
+                        ?.dependencies
+                        ?.any { it.group == "androidx.compose.compiler" } == true
+                ) {
+                    freeCompilerArgs += freeCompilerArgs + listOf(
+                        "-P",
+                        "plugin:androidx.compose.compiler.plugins.kotlin:suppressKotlinVersionCompatibilityCheck=true"
+                    )
+                }
+            }
         }
     }
 }
