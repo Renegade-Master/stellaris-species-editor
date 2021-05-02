@@ -43,7 +43,8 @@ compose.desktop {
 
 allprojects {
     afterEvaluate {
-        // This is required to stop builds failing due to the constantly changing nature of working with Jetbrains Desktop Compose
+        // This is required to stop builds failing due to the constantly changing nature of
+        // working with Jetbrains Desktop Compose
         tasks.withType<KotlinCompile> {
             kotlinOptions {
                 freeCompilerArgs = listOf(
