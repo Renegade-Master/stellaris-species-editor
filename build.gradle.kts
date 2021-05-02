@@ -46,16 +46,10 @@ allprojects {
         // This is required to stop builds failing due to the constantly changing nature of working with Jetbrains Desktop Compose
         tasks.withType<KotlinCompile> {
             kotlinOptions {
-                useIR = true
-                if (configurations.findByName("kotlinCompilerPluginClasspath")
-                        ?.dependencies
-                        ?.any { it.group == "androidx.compose.compiler" } == true
-                ) {
-                    freeCompilerArgs += freeCompilerArgs + listOf(
-                        "-P",
-                        "plugin:androidx.compose.compiler.plugins.kotlin:suppressKotlinVersionCompatibilityCheck=true"
-                    )
-                }
+                freeCompilerArgs = listOf(
+                    "-P",
+                    "plugin:androidx.compose.compiler.plugins.kotlin:suppressKotlinVersionCompatibilityCheck=true"
+                )
             }
         }
     }
