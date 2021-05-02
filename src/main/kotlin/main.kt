@@ -7,7 +7,11 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 
-fun main() = Window {
+import util.Resources
+
+fun main() = Window(
+    title = Resources.getStringResource("title-text")
+) {
     var text by remember { mutableStateOf("Hello, World!") }
 
     MaterialTheme {
