@@ -4,8 +4,10 @@
 name: Kotlin CI with Gradle on PR to main
 
 on:
-  pull_request:
-    branches: [ main ]
+  push:
+    branches: [ refs/for/main ]
+#   pull_request:
+#     branches: [ main ]
 
 jobs:
   build:
