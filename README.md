@@ -3,6 +3,12 @@
 Short program written primarily to test out new Jetpack Desktop Compose library. Allows safe editing and option
 selection for Stellaris Species file.
 
+## Build Status
+
+[![Kotlin CI with Gradle on PR to main](https://github.com/Renegade-Master/stellaris-species-editor/actions/workflows/gradle-build.yml/badge.svg)](https://github.com/Renegade-Master/stellaris-species-editor/actions/workflows/gradle-build.yml)
+
+[![Scan with Detekt](https://github.com/Renegade-Master/stellaris-species-editor/actions/workflows/detekt-static-code-analysis.yml/badge.svg)](https://github.com/Renegade-Master/stellaris-species-editor/actions/workflows/detekt-static-code-analysis.yml)
+
 ## Contributions
 
 Contributions are encouraged, and welcome.  

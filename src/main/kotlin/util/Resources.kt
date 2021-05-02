@@ -1,7 +1,5 @@
 package util
 
-import java.io.FileNotFoundException
-
 object Resources {
     fun getStringResource(id: String): String {
         val stringFile = "/strings/common-strings.properties"
