@@ -3,15 +3,14 @@ import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
-    kotlin("jvm") version "1.4.30"
-    id("org.jetbrains.compose") version "0.3.1"
+    kotlin("jvm") version "1.4.32"
+    id("org.jetbrains.compose") version "0.3.2"
 }
 
 group = "com.renegademaster"
 version = "1.0"
 
 repositories {
-    jcenter()
     mavenCentral()
     maven { url = uri("https://maven.pkg.jetbrains.space/public/p/compose/dev") }
 }
@@ -38,6 +37,21 @@ compose.desktop {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
             packageName = "stellaris-species-editor"
             packageVersion = "1.0.0"
+        }
+    }
+}
+
+allprojects {
+    afterEvaluate {
+        // This is required to stop builds failing due to the constantly changing nature of
+        // working with Jetbrains Desktop Compose
+        tasks.withType<KotlinCompile> {
+            kotlinOptions {
+                freeCompilerArgs = listOf(
+                    "-P",
+                    "plugin:androidx.compose.compiler.plugins.kotlin:suppressKotlinVersionCompatibilityCheck=true"
+                )
+            }
         }
     }
 }
