@@ -31,11 +31,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 
 object CustomStyle {
+    private val titleTextFontSize = 24.sp
+    private val paragraphTextFontSize = 16.sp
+
     fun titleText(): TextStyle {
         return TextStyle(
             color = Color.Black,
             fontWeight = FontWeight.ExtraBold,
-            fontSize = 24.sp
+            fontSize = titleTextFontSize
         )
     }
 
@@ -43,7 +46,7 @@ object CustomStyle {
         return TextStyle(
             color = Color.Black,
             fontWeight = FontWeight.Normal,
-            fontSize = 16.sp
+            fontSize = paragraphTextFontSize
         )
     }
 }

@@ -26,9 +26,10 @@
 package util
 
 object Resource {
-    fun getStringResource(id: String): String {
-        val stringFile = "/strings/common-strings.properties"
+    private const val stringFile = "/strings/common-strings.properties"
 
+
+    fun getStringResource(id: String): String {
         val resourceFile = javaClass.getResourceAsStream(stringFile)
 
         resourceFile?.bufferedReader()?.lines()?.use { lines ->
