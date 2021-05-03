@@ -27,19 +27,16 @@ import androidx.compose.desktop.Window
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import screens.DisplayState
-import screens.filepicker.filePickerScreen
 import screens.welcome.welcomeScreen
 import util.CustomStyle
 import util.Resource
@@ -53,40 +50,24 @@ fun main() = Window(
     // Styling
     val padValue: Dp = 16.dp
 
-    Card(
-        Modifier
+    Column(
+        modifier = Modifier
             .fillMaxSize()
-            .padding(padValue)
+            .padding(padValue),
+        verticalArrangement = Arrangement.SpaceBetween,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Column {
-            Row(
-                horizontalArrangement = Arrangement.Center
-            ) {
-                // Title Text which stays constant throughout application
-                Text(
-                    text = Resource.getStringResource("application-header"),
-                    style = CustomStyle.titleText()
-                )
-            }
-
-            Spacer(Modifier.height(padValue))
-
-            Row {
-                Card {
-                    // Interactive part of the application
-                    Row {
-                        when (applicationState.value) {
-                            DisplayState.Welcome -> {
-                                welcomeScreen(applicationState)
-                            }
-                            DisplayState.FilePicker -> {
-                                filePickerScreen(applicationState)
-                            }
-                            DisplayState.EditFile -> TODO()
-                        }
-                    }
-                }
-            }
+        // Title Row
+        Row(
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = "Title Text",
+                style = CustomStyle.titleText()
+            )
         }
+
+        welcomeScreen(applicationState)
     }
 }

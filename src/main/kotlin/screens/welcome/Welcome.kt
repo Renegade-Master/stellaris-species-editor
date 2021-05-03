@@ -25,11 +25,18 @@
 
 package screens.welcome
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.material.MaterialTheme
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.unit.dp
 import screens.DisplayState
 import util.CustomStyle
 import util.Resource
@@ -40,12 +47,51 @@ fun welcomeScreen(appState: MutableState<DisplayState>): MutableState<DisplaySta
 
     val welcomeText = Resource.getStringResource("welcome-text-intro")
 
-    MaterialTheme {
-        Column {
-            Text(
-                text = welcomeText,
-                style = CustomStyle.paragraphText()
-            )
+    // Styling
+    val padValue: Dp = 16.dp
+
+    // Description Row
+    Row(
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(
+            text = Resource.getStringResource("sample-text-long"),
+            textAlign = TextAlign.Justify,
+            style = CustomStyle.paragraphText()
+        )
+    }
+
+    // Button Row
+    Row(
+        horizontalArrangement = Arrangement.SpaceEvenly,
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Column(
+            modifier = androidx.compose.ui.Modifier.padding(padValue * 2),
+            verticalArrangement = Arrangement.SpaceEvenly,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Button(
+                onClick = { println("testButton0") }
+            ) {
+                Text(
+                    text = "Button 0"
+                )
+            }
+        }
+        Column(
+            modifier = androidx.compose.ui.Modifier.padding(padValue * 2),
+            verticalArrangement = Arrangement.SpaceEvenly,
+            horizontalAlignment = Alignment.CenterHorizontally
+        ) {
+            Button(
+                onClick = { println("testButton1") }
+            ) {
+                Text(
+                    text = "Button 1"
+                )
+            }
         }
     }
 
