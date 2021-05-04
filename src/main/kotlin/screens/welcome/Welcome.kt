@@ -43,9 +43,9 @@ import util.Resource
 
 @Composable
 fun welcomeScreen(appState: MutableState<DisplayState>): MutableState<DisplayState> {
-    appState.value = DisplayState.FilePicker
+    //val welcomeText = Resource.getStringResource("welcome-text-intro")
+    val welcomeText = Resource.getStringResource("sample-text-long")
 
-    val welcomeText = Resource.getStringResource("welcome-text-intro")
 
     // Styling
     val padValue: Dp = 16.dp
@@ -56,7 +56,7 @@ fun welcomeScreen(appState: MutableState<DisplayState>): MutableState<DisplaySta
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(
-            text = Resource.getStringResource("sample-text-long"),
+            text = welcomeText,
             textAlign = TextAlign.Justify,
             style = CustomStyle.paragraphText()
         )
