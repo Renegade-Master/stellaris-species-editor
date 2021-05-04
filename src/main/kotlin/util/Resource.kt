@@ -28,14 +28,16 @@ package util
 object Resource {
     private const val stringFile = "/strings/common-strings.properties"
 
-
     fun getStringResource(id: String): String {
         val resourceFile = javaClass.getResourceAsStream(stringFile)
 
         resourceFile?.bufferedReader()?.lines()?.use { lines ->
             for (it in lines) {
                 if (it.substringBefore("=") == id) {
-                    return it.substringAfter("$id=").removeSurrounding("\"")
+                    return it
+                        .substringAfter("$id=")
+                        .removeSurrounding("\"")
+                        .replace("\\n", System.getProperty("line.separator"))
                 }
             }
         }
