@@ -5,7 +5,7 @@ selection for Stellaris Species file.
 
 ## Build Status
 
-[![Kotlin CI with Gradle on PR to main](https://github.com/Renegade-Master/stellaris-species-editor/actions/workflows/gradle-build.yml/badge.svg)](https://github.com/Renegade-Master/stellaris-species-editor/actions/workflows/gradle-build.yml)
+[![Gradle Build on PR](https://github.com/Renegade-Master/stellaris-species-editor/actions/workflows/gradle-build.yml/badge.svg)](https://github.com/Renegade-Master/stellaris-species-editor/actions/workflows/gradle-build.yml)
 
 [![Scan with Detekt](https://github.com/Renegade-Master/stellaris-species-editor/actions/workflows/detekt-static-code-analysis.yml/badge.svg)](https://github.com/Renegade-Master/stellaris-species-editor/actions/workflows/detekt-static-code-analysis.yml)
 
