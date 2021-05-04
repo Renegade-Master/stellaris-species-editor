@@ -36,16 +36,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
-import screens.DisplayState
+import screens.ApplicationState
+import screens.edit.editFileScreen
 import screens.welcome.welcomeScreen
 import util.CustomStyle
 import util.Resource
+import kotlin.system.exitProcess
 
 fun main() = Window(
     title = Resource.getStringResource("title-text")
 ) {
     // State management for the application
-    var applicationState = remember { mutableStateOf(DisplayState.Welcome) }
+    var applicationState = remember { mutableStateOf<ApplicationState>(ApplicationState.Welcome) }
+
+    val headerText = Resource.getStringResource("application-header")
 
     // Styling
     val padValue: Dp = 16.dp
@@ -63,11 +67,21 @@ fun main() = Window(
             verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
-                text = "Title Text",
+                text = headerText,
                 style = CustomStyle.titleText()
             )
         }
 
-        welcomeScreen(applicationState)
+        applicationState = when (applicationState.value) {
+            ApplicationState.Welcome -> {
+                welcomeScreen(applicationState)
+            }
+
+            ApplicationState.EditFile -> {
+                editFileScreen(applicationState)
+            }
+
+            ApplicationState.Quitting -> exitProcess(0)
+        }
     }
 }

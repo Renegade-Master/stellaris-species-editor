@@ -23,7 +23,7 @@
  *
  */
 
-package screens.welcome
+package screens.edit
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -42,8 +42,8 @@ import util.CustomStyle
 import util.Resource
 
 @Composable
-fun welcomeScreen(appState: MutableState<ApplicationState>): MutableState<ApplicationState> {
-    val welcomeText = Resource.getStringResource("welcome-text-intro")
+fun editFileScreen(appState: MutableState<ApplicationState>): MutableState<ApplicationState> {
+    val welcomeText = Resource.getStringResource("sample-text-long")
 
     // Styling
     val padValue: Dp = 16.dp
@@ -84,7 +84,7 @@ fun welcomeScreen(appState: MutableState<ApplicationState>): MutableState<Applic
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Button(
-                onClick = { appState.value = ApplicationState.EditFile }
+                onClick = { appState.value = ApplicationState.Quitting }
             ) {
                 Text(
                     text = Resource.getStringResource("button-text-start")
