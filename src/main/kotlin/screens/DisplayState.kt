@@ -31,11 +31,6 @@ enum class DisplayState {
             return "WELCOME"
         }
     },
-    FilePicker {
-        override fun toString(): String {
-            return "FILE_PICKER"
-        }
-    },
     EditFile {
         override fun toString(): String {
             return "EDIT_FILE"
