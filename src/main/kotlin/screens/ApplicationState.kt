@@ -25,15 +25,8 @@
 
 package screens
 
-enum class DisplayState {
-    Welcome {
-        override fun toString(): String {
-            return "WELCOME"
-        }
-    },
-    EditFile {
-        override fun toString(): String {
-            return "EDIT_FILE"
-        }
-    }
+sealed class ApplicationState {
+    object Welcome : ApplicationState()
+    object EditFile : ApplicationState()
+    object Quitting : ApplicationState()
 }
