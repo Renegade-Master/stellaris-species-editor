@@ -25,73 +25,11 @@
 
 package screens.edit
 
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Button
-import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
 import screens.ApplicationState
-import util.CustomStyle
-import util.Resource
 
 @Composable
 fun editFileScreen(appState: MutableState<ApplicationState>): MutableState<ApplicationState> {
-    val welcomeText = Resource.getStringResource("sample-text-long")
-
-    // Styling
-    val padValue: Dp = 16.dp
-
-    // Description Row
-    Row(
-        horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Text(
-            text = welcomeText,
-            textAlign = TextAlign.Justify,
-            style = CustomStyle.paragraphText()
-        )
-    }
-
-    // Button Row
-    Row(
-        horizontalArrangement = Arrangement.SpaceEvenly,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Column(
-            modifier = androidx.compose.ui.Modifier.padding(padValue * 2),
-            verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Button(
-                onClick = { appState.value = ApplicationState.Quitting }
-            ) {
-                Text(
-                    text = Resource.getStringResource("button-text-quit")
-                )
-            }
-        }
-        Column(
-            modifier = androidx.compose.ui.Modifier.padding(padValue * 2),
-            verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalAlignment = Alignment.CenterHorizontally
-        ) {
-            Button(
-                onClick = { appState.value = ApplicationState.Quitting }
-            ) {
-                Text(
-                    text = Resource.getStringResource("button-text-start")
-                )
-            }
-        }
-    }
-
-    return appState
+    TODO()
 }
