@@ -27,7 +27,7 @@ package util.empire
 
 data class UserEmpire(val speciesKey: String) {
     val shipPrefix: String = ""
-    val species: Species = Species
+    val species: Species = Species("DEFAULT")
     val name: String = ""
     val adjective: String = ""
     val authority: Authority = Authority.Default
@@ -38,14 +38,14 @@ data class UserEmpire(val speciesKey: String) {
     val initialiser: Initialiser = Initialiser.Default
     val graphicalCulture: GraphicalCulture = GraphicalCulture.Default
     val cityGraphicalCulture: CityGraphicalCulture = CityGraphicalCulture.Default
-    val empireFlag: EmpireFlag = EmpireFlag
-    val ruler: Ruler = Ruler
+    val empireFlag: EmpireFlag = EmpireFlag("DEFAULT")
+    val ruler: Ruler = Ruler("DEFAULT")
     val spawnAsFallen: Boolean = false
     val ignorePortraitDuplication: Boolean = false
     val room: Room = Room.Default
     val spawnEnabled: Boolean = false
     val ethic: Ethic = Ethic.Default
-    val civics: Civics = Civics
+    val civics: Array<Civic> = arrayOf<Civic>()
     val origin: Origin = Origin.Default
 
 
@@ -173,6 +173,15 @@ data class UserEmpire(val speciesKey: String) {
      * situations.
      */
     enum class Ethic(val repr: String) {
+        Default("none_selected")
+
+        // TODO("Requires completion.  Refer to: []")
+    }
+
+    /**
+     *
+     */
+    enum class Civic(val repr: String) {
         Default("none_selected")
 
         // TODO("Requires completion.  Refer to: []")

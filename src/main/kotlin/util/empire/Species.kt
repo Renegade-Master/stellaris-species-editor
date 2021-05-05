@@ -25,10 +25,9 @@
 
 package util.empire
 
-object Species {
+data class Species(val name: String) {
     val speciesClass: String = ""
-    val pertrait: String = ""
-    val name: String = ""
+    val portrait: String = ""
     val plural: String = ""
     val adjective: String = ""
     val speciesBio: String = ""

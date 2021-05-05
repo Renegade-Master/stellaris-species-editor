@@ -25,23 +25,34 @@
 
 package util.empire
 
-object Ruler {
-    val speciesKey: String = ""
-    val shipPrefix: String = ""
-    val name: String = ""
-    val adjective: String = ""
-    val authority: String = ""
-    val government: String = ""
-    val planetName: String = ""
-    val planetClass: String = ""
-    val systemName: String = ""
-    val initialiser: String = ""
-    val graphicalCulture: String = ""
-    val cityGraphicalCulture: String = ""
-    val spawnAsFallen: String = ""
-    val ignorePortraitDuplication: String = ""
-    val room: String = ""
-    val spawnEnabled: String = ""
-    val ethic: String = ""
-    val origin: String = ""
+data class Ruler(val name: String) {
+    val gender: Gender = Gender.Default
+    val portrait: Portrait = Portrait.Default
+    val texture: Int = 0
+    val hair: Int = 0
+    val clothes: Int = 0
+    val rulerTitle: String = ""
+    val leaderClass: String = ""
+
+
+    enum class Gender(val repr: String) {
+        FEMALE("FEMALE") {
+            override fun toString(): String {
+                return "Female"
+            }
+        },
+
+        MALE("MALE") {
+            override fun toString(): String {
+                return "Male"
+            }
+        },
+
+        Default("none_selected")
+    }
+
+    enum class Portrait(val repr: String) {
+        Default("none_selected")
+    }
+
 }

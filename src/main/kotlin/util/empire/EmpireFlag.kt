@@ -25,7 +25,7 @@
 
 package util.empire
 
-object EmpireFlag {
+data class EmpireFlag(val flagKey: String) {
     object icon {
         val iconCategory: String = ""
         val iconFile: String = ""
