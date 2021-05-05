@@ -26,18 +26,15 @@
 import androidx.compose.desktop.Window
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Text
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
 import screens.ApplicationState
 import screens.edit.editFileScreen
+import screens.title.title
 import screens.welcome.welcomeScreen
 import util.CustomStyle
 import util.Resource
@@ -49,29 +46,18 @@ fun main() = Window(
     // State management for the application
     var applicationState = remember { mutableStateOf<ApplicationState>(ApplicationState.Welcome) }
 
-    val headerText = Resource.getStringResource("application-header")
-
-    // Styling
-    val padValue: Dp = 16.dp
-
+    // Container for all screens
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(padValue),
+            .padding(CustomStyle.PadValue.standard),
         verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        // Title Row
-        Row(
-            horizontalArrangement = Arrangement.Center,
-            verticalAlignment = Alignment.CenterVertically
-        ) {
-            Text(
-                text = headerText,
-                style = CustomStyle.titleText()
-            )
-        }
+        // Title text
+        title()
 
+        // Application State handler
         applicationState = when (applicationState.value) {
             ApplicationState.Welcome -> {
                 welcomeScreen(applicationState)
