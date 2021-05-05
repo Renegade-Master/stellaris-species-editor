@@ -35,8 +35,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.Dp
-import androidx.compose.ui.unit.dp
 import screens.ApplicationState
 import util.CustomStyle
 import util.Resource
@@ -44,9 +42,6 @@ import util.Resource
 @Composable
 fun welcomeScreen(appState: MutableState<ApplicationState>): MutableState<ApplicationState> {
     val welcomeText = Resource.getStringResource("welcome-text-intro")
-
-    // Styling
-    val padValue: Dp = 16.dp
 
     // Description Row
     Row(
@@ -66,7 +61,7 @@ fun welcomeScreen(appState: MutableState<ApplicationState>): MutableState<Applic
         verticalAlignment = Alignment.CenterVertically
     ) {
         Column(
-            modifier = androidx.compose.ui.Modifier.padding(padValue * 2),
+            modifier = androidx.compose.ui.Modifier.padding(CustomStyle.PadValue.double),
             verticalArrangement = Arrangement.SpaceEvenly,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
@@ -79,7 +74,7 @@ fun welcomeScreen(appState: MutableState<ApplicationState>): MutableState<Applic
             }
         }
         Column(
-            modifier = androidx.compose.ui.Modifier.padding(padValue * 2),
+            modifier = androidx.compose.ui.Modifier.padding(CustomStyle.PadValue.double),
             verticalArrangement = Arrangement.SpaceEvenly,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
