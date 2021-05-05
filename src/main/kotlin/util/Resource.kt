@@ -25,8 +25,13 @@
 
 package util
 
+import util.empire.UserEmpire
+import java.io.File
+
 object Resource {
     private const val stringFile = "/strings/common-strings.properties"
+    private val userEmpireLocation =
+        "${System.getenv("USERPROFILE")}\\Documents\\Paradox Interactive\\Stellaris\\user_empire_designs.txt"
 
     fun getStringResource(id: String): String {
         val resourceFile = javaClass.getResourceAsStream(stringFile)
@@ -42,6 +47,16 @@ object Resource {
             }
         }
 
-        throw NoSuchFieldException()
+        throw NoSuchFieldException("A String resource with the requested ID could not be found.")
+    }
+
+    fun getUserEmpireAsString(): String {
+        val userEmpireFile = File(userEmpireLocation)
+
+        return userEmpireFile.inputStream().readBytes().toString(Charsets.UTF_8)
+    }
+
+    fun getUserEmpire(): UserEmpire {
+        TODO("User Empire creation not finalised yet")
     }
 }

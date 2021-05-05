@@ -23,25 +23,15 @@
  *
  */
 
-package screens.edit
+package util.empire
 
-import androidx.compose.foundation.layout.Row
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import screens.ApplicationState
-import util.Resource
-
-@Composable
-fun editFileScreen(appState: MutableState<ApplicationState>): MutableState<ApplicationState> {
-//    val userEmpire: UserEmpire = Resource.getUserEmpire()
-    val userEmpire: String = Resource.getUserEmpireAsString()
-
-    Row() {
-        Text(
-            text = userEmpire
-        )
-    }
-
-    return appState
+object Species {
+    val speciesClass: String = ""
+    val pertrait: String = ""
+    val name: String = ""
+    val plural: String = ""
+    val adjective: String = ""
+    val speciesBio: String = ""
+    val nameList: String = ""
+    val traits: List<String> = listOf<String>()
 }

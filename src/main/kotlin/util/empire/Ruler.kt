@@ -23,25 +23,25 @@
  *
  */
 
-package screens.edit
+package util.empire
 
-import androidx.compose.foundation.layout.Row
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import screens.ApplicationState
-import util.Resource
-
-@Composable
-fun editFileScreen(appState: MutableState<ApplicationState>): MutableState<ApplicationState> {
-//    val userEmpire: UserEmpire = Resource.getUserEmpire()
-    val userEmpire: String = Resource.getUserEmpireAsString()
-
-    Row() {
-        Text(
-            text = userEmpire
-        )
-    }
-
-    return appState
+object Ruler {
+    val speciesKey: String = ""
+    val shipPrefix: String = ""
+    val name: String = ""
+    val adjective: String = ""
+    val authority: String = ""
+    val government: String = ""
+    val planetName: String = ""
+    val planetClass: String = ""
+    val systemName: String = ""
+    val initialiser: String = ""
+    val graphicalCulture: String = ""
+    val cityGraphicalCulture: String = ""
+    val spawnAsFallen: String = ""
+    val ignorePortraitDuplication: String = ""
+    val room: String = ""
+    val spawnEnabled: String = ""
+    val ethic: String = ""
+    val origin: String = ""
 }
