@@ -26,27 +26,27 @@
 package util.empire
 
 data class UserEmpire(val speciesKey: String) {
-    val shipPrefix: String = ""
-    val species: Species = Species("DEFAULT")
-    val name: String = ""
-    val adjective: String = ""
-    val authority: Authority = Authority.Default
-    val government: Government = Government.Default
-    val planetName: String = ""
-    val planetClass: PlanetClass = PlanetClass.Default
-    val systemName: String = ""
-    val initialiser: Initialiser = Initialiser.Default
-    val graphicalCulture: GraphicalCulture = GraphicalCulture.Default
-    val cityGraphicalCulture: CityGraphicalCulture = CityGraphicalCulture.Default
-    val empireFlag: EmpireFlag = EmpireFlag("DEFAULT")
-    val ruler: Ruler = Ruler("DEFAULT")
-    val spawnAsFallen: Boolean = false
-    val ignorePortraitDuplication: Boolean = false
-    val room: Room = Room.Default
-    val spawnEnabled: Boolean = false
-    val ethic: Ethic = Ethic.Default
-    val civics: Array<Civic> = arrayOf<Civic>()
-    val origin: Origin = Origin.Default
+    var shipPrefix: String = ""
+    var species: Species = Species("DEFAULT")
+    var name: String = ""
+    var adjective: String = ""
+    var authority: Authority = Authority.Default
+    var government: Government = Government.Default
+    var planetName: String = ""
+    var planetClass: PlanetClass = PlanetClass.Default
+    var systemName: String = ""
+    var initialiser: Initialiser = Initialiser.Default
+    var graphicalCulture: GraphicalCulture = GraphicalCulture.Default
+    var cityGraphicalCulture: CityGraphicalCulture = CityGraphicalCulture.Default
+    var empireFlag: EmpireFlag = EmpireFlag("DEFAULT")
+    var ruler: Ruler = Ruler("DEFAULT")
+    var spawnAsFallen: Boolean = false
+    var ignorePortraitDuplication: Boolean = false
+    var room: Room = Room.Default
+    var spawnEnabled: Boolean = false
+    var ethic: Ethic = Ethic.Default
+    var civics: Array<Civic> = arrayOf<Civic>()
+    var origin: Origin = Origin.Default
 
 
     /**

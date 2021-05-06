@@ -44,7 +44,8 @@ fun main() = Window(
     title = Resource.getStringResource("title-text")
 ) {
     // State management for the application
-    var applicationState = remember { mutableStateOf<ApplicationState>(ApplicationState.Welcome) }
+//    var applicationState = remember { mutableStateOf<ApplicationState>(ApplicationState.Welcome) }
+    var applicationState = remember { mutableStateOf<ApplicationState>(ApplicationState.EditFile) }
 
     // Container for all screens
     Column(

@@ -23,39 +23,20 @@
  *
  */
 
-package screens.edit
+package util
 
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.material.Card
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.MutableState
-import screens.ApplicationState
-import util.Resource
 import util.empire.UserEmpire
 
-@Composable
-fun editFileScreen(appState: MutableState<ApplicationState>): MutableState<ApplicationState> {
-    val userEmpireList: ArrayList<UserEmpire> = Resource.getUserEmpireList()
-    val userEmpireListNames: ArrayList<String> = arrayListOf()
+fun EmpireParser(userEmpireString: String): ArrayList<UserEmpire> {
+    val userEmpireList: ArrayList<UserEmpire> = arrayListOf()
 
-    userEmpireList.forEach { userEmpireListNames.add(it.speciesKey) }
-
-    Card() {
-        Column() {
-            Row() {
-                Text(
-                    text = "User Empire Count: ${userEmpireList.size}"
-                )
-            }
-            Row() {
-                Text(
-                    text = "Names: \n${userEmpireListNames}"
-                )
-            }
+    userEmpireString.lines().forEach {
+        // Attempt to process a single Species
+        if (it.startsWith('\"')) {
+            var userEmpire: UserEmpire = UserEmpire(it.removeSurrounding("\""))
+            userEmpireList.add(userEmpire)
         }
     }
 
-    return appState
+    return userEmpireList
 }

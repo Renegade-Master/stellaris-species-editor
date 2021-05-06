@@ -50,13 +50,18 @@ object Resource {
         throw NoSuchFieldException("A String resource with the requested ID could not be found.")
     }
 
-    fun getUserEmpireAsString(): String {
+    private fun getUserEmpireAsString(): String {
         val userEmpireFile = File(userEmpireLocation)
 
-        return userEmpireFile.inputStream().readBytes().toString(Charsets.UTF_8)
+        return userEmpireFile
+            .inputStream()
+            .readBytes()
+            .toString(Charsets.UTF_8)
     }
 
-    fun getUserEmpire(): UserEmpire {
-        TODO("User Empire creation not finalised yet")
+    fun getUserEmpireList(): ArrayList<UserEmpire> {
+        val userEmpireString: String = getUserEmpireAsString()
+
+        return EmpireParser(userEmpireString)
     }
 }
