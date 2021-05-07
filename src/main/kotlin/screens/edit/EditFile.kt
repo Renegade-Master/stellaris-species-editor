@@ -27,11 +27,17 @@ package screens.edit
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Card
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.ui.Modifier
 import screens.ApplicationState
+import util.CustomStyle
 import util.Resource
 import util.empire.UserEmpire
 
@@ -39,19 +45,35 @@ import util.empire.UserEmpire
 fun editFileScreen(appState: MutableState<ApplicationState>): MutableState<ApplicationState> {
     val userEmpireList: ArrayList<UserEmpire> = Resource.getUserEmpireList()
     val userEmpireListNames: ArrayList<String> = arrayListOf()
+    val scrollState = rememberScrollState()
 
     userEmpireList.forEach { userEmpireListNames.add(it.speciesKey) }
 
     Card() {
-        Column() {
+        Column(
+            modifier = Modifier.verticalScroll(state = scrollState)
+        ) {
             Row() {
                 Text(
                     text = "User Empire Count: ${userEmpireList.size}"
                 )
             }
+            Spacer(modifier = Modifier.size(CustomStyle.PadValue.standard))
             Row() {
                 Text(
                     text = "Names: \n${userEmpireListNames}"
+                )
+            }
+            Spacer(modifier = Modifier.size(CustomStyle.PadValue.standard))
+            Row() {
+                Text(
+                    text = "User Empire 0:\n${userEmpireList[0]}"
+                )
+            }
+            Spacer(modifier = Modifier.size(CustomStyle.PadValue.standard))
+            Row() {
+                Text(
+                    text = "All Empires:\n${userEmpireList}"
                 )
             }
         }

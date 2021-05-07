@@ -3,9 +3,10 @@ import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+    // Newest Kotlin version is 1.5.0, but that version will not compile
     kotlin("jvm") version "1.4.32"
 
-    // Newest compose version is 0.3.2, but that version will not compile
+    // Newest Compose version is 0.3.2, but that version will not compile
     id("org.jetbrains.compose") version "0.3.1"
 }
 
