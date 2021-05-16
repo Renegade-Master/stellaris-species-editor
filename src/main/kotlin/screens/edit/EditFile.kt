@@ -25,17 +25,29 @@
 
 package screens.edit
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.requiredSizeIn
+import androidx.compose.foundation.layout.requiredWidthIn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Card
+import androidx.compose.material.DropdownMenu
+import androidx.compose.material.DropdownMenuItem
+import androidx.compose.material.Icon
+import androidx.compose.material.IconButton
 import androidx.compose.material.Text
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.MoreVert
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.unit.dp
 import screens.ApplicationState
 import util.CustomStyle
 import util.Resource
@@ -43,38 +55,62 @@ import util.empire.UserEmpire
 
 @Composable
 fun editFileScreen(appState: MutableState<ApplicationState>): MutableState<ApplicationState> {
+    val logger = util.Logger.getLogger("EditFile")
+
+    val expanded: MutableState<Boolean> = remember { mutableStateOf(false) }
+    val currentSpecies: MutableState<Int> = remember { mutableStateOf(0) }
+
     val userEmpireList: ArrayList<UserEmpire> = Resource.getUserEmpireList()
     val userEmpireListNames: ArrayList<String> = arrayListOf()
     val scrollState = rememberScrollState()
 
     userEmpireList.forEach { userEmpireListNames.add(it.speciesKey) }
 
-    Card() {
-        Column(
-            modifier = Modifier.verticalScroll(state = scrollState)
+    logger.debug { "User Empire Count: ${userEmpireList.size}" }
+    logger.debug { "Names: $userEmpireListNames" }
+    logger.debug { "All Empires:\n${userEmpireList}" }
+
+    Column(
+        modifier = Modifier
+            .fillMaxWidth()
+            .verticalScroll(state = scrollState)
+    ) {
+        // Species Selection
+        Row(
+            modifier = Modifier
+                .requiredWidthIn(min = 400.dp, max = 400.dp)
+                .fillMaxWidth(),
+            verticalAlignment = Alignment.CenterVertically,
+            horizontalArrangement = Arrangement.Start,
         ) {
-            Row() {
-                Text(
-                    text = "User Empire Count: ${userEmpireList.size}"
-                )
-            }
-            Spacer(modifier = Modifier.size(CustomStyle.PadValue.standard))
-            Row() {
-                Text(
-                    text = "Names: \n${userEmpireListNames}"
-                )
-            }
-            Spacer(modifier = Modifier.size(CustomStyle.PadValue.standard))
-            Row() {
-                Text(
-                    text = "User Empire 0:\n${userEmpireList[0]}"
-                )
-            }
-            Spacer(modifier = Modifier.size(CustomStyle.PadValue.standard))
-            Row() {
-                Text(
-                    text = "All Empires:\n${userEmpireList}"
-                )
+            Text(
+                text = "Species: ${userEmpireList[currentSpecies.value].name}"
+            )
+
+            Box() {
+                IconButton(onClick = { expanded.value = true }) {
+                    Icon(
+                        Icons.Filled.MoreVert,
+                        contentDescription = "Open Species Drop-Down menu"
+                    )
+                }
+
+                DropdownMenu(
+                    modifier = Modifier.requiredSizeIn(maxHeight = CustomStyle.DropDownSize.short),
+                    expanded = expanded.value,
+                    onDismissRequest = { expanded.value = false }
+                ) {
+                    userEmpireList.forEachIndexed { index, ue ->
+                        DropdownMenuItem(
+                            onClick = {
+                                logger.info { "Selected Species: ${ue.name}" }
+                                currentSpecies.value = index
+                            }
+                        ) {
+                            Text(ue.name)
+                        }
+                    }
+                }
             }
         }
     }

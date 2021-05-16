@@ -37,6 +37,12 @@ object CustomStyle {
         val paragraphText = 16.sp
     }
 
+    object DropDownSize {
+        val short = 200.dp
+        val medium = 500.dp
+        val long = 1000.dp
+    }
+
     object PadValue {
         val standard = 16.dp;
         val double = standard * 2;

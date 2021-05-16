@@ -38,23 +38,20 @@ class EmpireParser {
         // Read the file until the end
         while (it.hasNext()) {
             var currLine = it.safeNext()
+            var userEmpire: UserEmpire
 
             // Attempt to process a single Species
             if (currLine.startsWith('\"')) {
-                var userEmpire: UserEmpire = UserEmpire(currLine.removeSurrounding("\""))
+                userEmpire = UserEmpire(currLine.removeSurrounding("\""))
                 it.safeNext() // Skip the opening brace
 
                 // Get the Species Key
                 currLine = it.safeNext()
-                if (currLine.startsWith("key=")) {
-                    userEmpire.speciesKey = currLine.substringAfter("key=").removeSurrounding("\"")
-                }
+                userEmpire.speciesKey = tryGetSimpleValue(currLine, "\tkey=")
 
                 // Get the Ship Prefix
                 currLine = it.safeNext()
-                if (currLine.startsWith("\tship_prefix=")) {
-                    userEmpire.shipPrefix = currLine.substringAfter("ship_prefix=").removeSurrounding("\"")
-                }
+                userEmpire.shipPrefix = tryGetSimpleValue(currLine, "\tship_prefix")
 
                 // Get the Primary Species
                 currLine = it.safeNext()
@@ -78,15 +75,11 @@ class EmpireParser {
 
                 // Get the User Empire Name
                 currLine = it.safeNext()
-                if (currLine.startsWith("\tname=")) {
-                    userEmpire.name = currLine.substringAfter("name=").removeSurrounding("\"")
-                }
+                userEmpire.name = tryGetSimpleValue(currLine, "\tname=")
 
                 // Get the User Empire Adjective
                 currLine = it.safeNext()
-                if (currLine.startsWith("\tadjective=")) {
-                    userEmpire.adjective = currLine.substringAfter("adjective=").removeSurrounding("\"")
-                }
+                userEmpire.adjective = tryGetSimpleValue(currLine, "\tadjective=")
 
                 // Get the User Empire Authority
                 currLine = it.safeNext()
@@ -116,9 +109,7 @@ class EmpireParser {
 
                 // Get the Species Planet Name
                 currLine = it.safeNext()
-                if (currLine.startsWith("\tplanet_name=")) {
-                    userEmpire.planetName = currLine.substringAfter("planet_name=").removeSurrounding("\"")
-                }
+                userEmpire.planetName = tryGetSimpleValue(currLine, "\tplanet_name=")
 
                 // Get the User Empire Planet Class
                 currLine = it.safeNext()
@@ -130,9 +121,7 @@ class EmpireParser {
 
                 // Get the Species System Name
                 currLine = it.safeNext()
-                if (currLine.startsWith("\tsystem_name=")) {
-                    userEmpire.systemName = currLine.substringAfter("system_name=").removeSurrounding("\"")
-                }
+                userEmpire.systemName = tryGetSimpleValue(currLine, "\tsystem_name=")
 
                 // TODO: initializer
                 // TODO: graphical_culture
@@ -152,6 +141,14 @@ class EmpireParser {
         }
 
         return userEmpireList
+    }
+
+    private fun tryGetSimpleValue(currLine: String, prefix: String): String {
+        if (currLine.startsWith(prefix)) {
+            return currLine.substringAfter(prefix).removeSurrounding("\"")
+        }
+
+        return ""
     }
 
     /**
@@ -214,8 +211,8 @@ class EmpireParser {
 
             while (!currLine.endsWith('"')) {
                 currLine = it.safeNext()
-                species.speciesBio +=
-                    currLine.substringAfter("species_bio=").removeSurrounding("\"")
+                species.speciesBio += "\n" +
+                        currLine.substringAfter("species_bio=").removeSurrounding("\"")
             }
         }
 

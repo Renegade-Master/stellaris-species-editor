@@ -388,29 +388,33 @@ data class UserEmpire(var speciesKey: String) {
 
     override fun toString(): String {
         return "UserEmpire:\n" +
-                "    speciesKey='$speciesKey'\n " +
-                "    shipPrefix='$shipPrefix'\n " +
-                "    primarySpecies=\n    $primarySpecies\n " +
-                "    secondarySpecies=\n    $secondarySpecies\n " +
-                "    name='$name'\n " +
-                "    adjective='$adjective'\n " +
-                "    authority=$authority\n " +
-                "    government=$government\n " +
-                "    advisorVoice=$advisorVoice\n " +
-                "    planetName='$planetName'\n " +
-                "    planetClass=$planetClass\n " +
-                "    systemName='$systemName'\n " +
-                "    initialiser=$initialiser\n " +
-                "    graphicalCulture=$graphicalCulture\n " +
-                "    cityGraphicalCulture=$cityGraphicalCulture\n " +
-                "    empireFlag=$empireFlag\n " +
-                "    ruler=$ruler\n " +
-                "    spawnAsFallen=$spawnAsFallen\n " +
-                "    ignorePortraitDuplication=$ignorePortraitDuplication\n " +
-                "    room=$room\n " +
-                "    spawnEnabled=$spawnEnabled\n " +
-                "    ethic=$ethic\n " +
-                "    civics=${civics}\n " +
+                "    speciesKey='$speciesKey'\n" +
+                "    shipPrefix='$shipPrefix'\n" +
+                "    primarySpecies=\n    $primarySpecies\n" +
+                "    ${
+                    if (secondarySpecies.name != "DEFAULT") {
+                        "secondarySpecies=\n    $secondarySpecies\n"
+                    } else ""
+                }" +
+                "    name='$name'\n" +
+                "    adjective='$adjective'\n" +
+                "    authority=$authority\n" +
+                "    government=$government\n" +
+                "    advisorVoice=$advisorVoice\n" +
+                "    planetName='$planetName'\n" +
+                "    planetClass=$planetClass\n" +
+                "    systemName='$systemName'\n" +
+                "    initialiser=$initialiser\n" +
+                "    graphicalCulture=$graphicalCulture\n" +
+                "    cityGraphicalCulture=$cityGraphicalCulture\n" +
+                "    empireFlag=$empireFlag\n" +
+                "    ruler=$ruler\n" +
+                "    spawnAsFallen=$spawnAsFallen\n" +
+                "    ignorePortraitDuplication=$ignorePortraitDuplication\n" +
+                "    room=$room\n" +
+                "    spawnEnabled=$spawnEnabled\n" +
+                "    ethic=$ethic\n" +
+                "    civics=${civics}\n" +
                 "    origin=$origin\n\n"
     }
 }

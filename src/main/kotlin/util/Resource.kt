@@ -27,27 +27,19 @@ package util
 
 import util.empire.UserEmpire
 import java.io.File
+import java.io.InputStream
 
 object Resource {
     private const val stringFile = "/strings/common-strings.properties"
+    private const val applicationPropertiesFile = "/application.properties"
+
     private val userEmpireLocation =
         "${System.getenv("USERPROFILE")}\\Documents\\Paradox Interactive\\Stellaris\\user_empire_designs.txt"
 
     fun getStringResource(id: String): String {
         val resourceFile = javaClass.getResourceAsStream(stringFile)
 
-        resourceFile?.bufferedReader()?.lines()?.use { lines ->
-            for (it in lines) {
-                if (it.substringBefore("=") == id) {
-                    return it
-                        .substringAfter("$id=")
-                        .removeSurrounding("\"")
-                        .replace("\\n", System.getProperty("line.separator"))
-                }
-            }
-        }
-
-        throw NoSuchFieldException("A String resource with the requested ID could not be found.")
+        return readResourceFile(resourceFile, id)
     }
 
     private fun getUserEmpireAsString(): String {
@@ -63,5 +55,26 @@ object Resource {
         val userEmpireString: String = getUserEmpireAsString()
 
         return EmpireParser().parseEmpire(userEmpireString)
+    }
+
+    fun getApplicationProperty(id: String): String {
+        val appProps = javaClass.getResourceAsStream(applicationPropertiesFile)
+
+        return readResourceFile(appProps, id)
+    }
+
+    private fun readResourceFile(resource: InputStream?, id: String): String {
+        resource?.bufferedReader()?.lines()?.use { lines ->
+            for (it in lines) {
+                if (it.substringBefore("=") == id) {
+                    return it
+                        .substringAfter("$id=")
+                        .removeSurrounding("\"")
+                        .replace("\\n", System.getProperty("line.separator"))
+                }
+            }
+        }
+
+        throw NoSuchFieldException("A Property resource with the requested ID could not be found.")
     }
 }

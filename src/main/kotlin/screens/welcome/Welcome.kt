@@ -28,12 +28,14 @@ package screens.welcome
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import screens.ApplicationState
 import util.CustomStyle
@@ -43,47 +45,52 @@ import util.Resource
 fun welcomeScreen(appState: MutableState<ApplicationState>): MutableState<ApplicationState> {
     val welcomeText = Resource.getStringResource("welcome-text-intro")
 
-    // Description Row
-    Row(
-        horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(
-            text = welcomeText,
-            textAlign = TextAlign.Justify,
-            style = CustomStyle.paragraphText()
-        )
-    }
-
-    // Button Row
-    Row(
-        horizontalArrangement = Arrangement.SpaceEvenly,
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Column(
-            modifier = androidx.compose.ui.Modifier.padding(CustomStyle.PadValue.double),
-            verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalAlignment = Alignment.CenterHorizontally
+        // Description Row
+        Row(
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            Button(
-                onClick = { appState.value = ApplicationState.Quitting }
-            ) {
-                Text(
-                    text = Resource.getStringResource("button-text-quit")
-                )
-            }
+            Text(
+                text = welcomeText,
+                textAlign = TextAlign.Justify,
+                style = CustomStyle.paragraphText()
+            )
         }
-        Column(
-            modifier = androidx.compose.ui.Modifier.padding(CustomStyle.PadValue.double),
-            verticalArrangement = Arrangement.SpaceEvenly,
-            horizontalAlignment = Alignment.CenterHorizontally
+
+        // Button Row
+        Row(
+            horizontalArrangement = Arrangement.SpaceEvenly,
+            verticalAlignment = Alignment.CenterVertically
         ) {
-            Button(
-                onClick = { appState.value = ApplicationState.EditFile }
+            Column(
+                modifier = Modifier.padding(CustomStyle.PadValue.double),
+                verticalArrangement = Arrangement.SpaceEvenly,
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(
-                    text = Resource.getStringResource("button-text-start")
-                )
+                Button(
+                    onClick = { appState.value = ApplicationState.Quitting }
+                ) {
+                    Text(
+                        text = Resource.getStringResource("button-text-quit")
+                    )
+                }
+            }
+            Column(
+                modifier = Modifier.padding(CustomStyle.PadValue.double),
+                verticalArrangement = Arrangement.SpaceEvenly,
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Button(
+                    onClick = { appState.value = ApplicationState.EditFile }
+                ) {
+                    Text(
+                        text = Resource.getStringResource("button-text-start")
+                    )
+                }
             }
         }
     }

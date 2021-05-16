@@ -26,10 +26,15 @@
 package screens.title
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
 import util.CustomStyle
 import util.Resource
 
@@ -38,13 +43,20 @@ fun title() {
     val headerText = Resource.getStringResource("application-header")
 
     // Title Row
-    Row(
-        horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically
+    Column(
+        modifier = Modifier.fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(
-            text = headerText,
-            style = CustomStyle.titleText()
-        )
+        Row(
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            Text(
+                text = headerText,
+                style = CustomStyle.titleText()
+            )
+        }
+
+        Spacer(modifier = Modifier.height(CustomStyle.PadValue.standard))
     }
 }
