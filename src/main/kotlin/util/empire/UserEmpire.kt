@@ -28,11 +28,12 @@ package util.empire
 data class UserEmpire(var speciesKey: String) {
     var shipPrefix: String = ""
     var primarySpecies: Species = Species("DEFAULT")
-    var secondarySpecies: Species? = null
+    var secondarySpecies: Species = Species("DEFAULT")
     var name: String = ""
     var adjective: String = ""
     var authority: Authority = Authority.Default
     var government: Government = Government.Default
+    var advisorVoice: AdvisorVoice = AdvisorVoice.Default
     var planetName: String = ""
     var planetClass: PlanetClass = PlanetClass.Default
     var systemName: String = ""
@@ -45,7 +46,7 @@ data class UserEmpire(var speciesKey: String) {
     var ignorePortraitDuplication: Boolean = false
     var room: Room = Room.Default
     var spawnEnabled: Boolean = false
-    var ethic: Ethic = Ethic.Default
+    var ethic: MutableList<Ethic> = mutableListOf<Ethic>()
     var civics: MutableList<Civic> = mutableListOf<Civic>()
     var origin: Origin = Origin.Default
 
@@ -106,6 +107,54 @@ data class UserEmpire(var speciesKey: String) {
      * increased weight to be drawn during Oligarchic Elections.
      */
     enum class Government(val repr: String) {
+        GOV_BANDIT_KINGDOM("gov_bandit_kingdom") {
+            override fun toString(): String {
+                return "Bandit Kingdom"
+            }
+        },
+
+        GOV_CITIZEN_REPUBLIC("gov_citizen_republic") {
+            override fun toString(): String {
+                return "Citizen Republic"
+            }
+        },
+
+        GOV_CRIMINAL_SYNDICATE("gov_criminal_syndicate") {
+            override fun toString(): String {
+                return "Criminal Syndicate"
+            }
+        },
+
+        GOV_DESPOTIC_HEGEMONY("gov_despotic_hegemony") {
+            override fun toString(): String {
+                return "Despotic Hegemony"
+            }
+        },
+
+        GOV_EXECUTIVE_COMMITTEE("gov_executive_committee") {
+            override fun toString(): String {
+                return "Executive Committee"
+            }
+        },
+
+        GOV_HIVE_MIND("gov_hive_mind") {
+            override fun toString(): String {
+                return "Hive Mind"
+            }
+        },
+
+        GOV_IRENIC_MONARCHY("gov_irenic_monarchy") {
+            override fun toString(): String {
+                return "Irenic Monarchy"
+            }
+        },
+
+        GOV_MACHINE_EMPIRE("gov_machine_empire") {
+            override fun toString(): String {
+                return "Machine Empire"
+            }
+        },
+
         GOV_MACHINE_INDUSTRIAL("gov_machine_industrial") {
             override fun toString(): String {
                 return "Machine Industrial"
@@ -118,75 +167,9 @@ data class UserEmpire(var speciesKey: String) {
             }
         },
 
-        GOV_MACHINE_EMPIRE("gov_machine_empire") {
-            override fun toString(): String {
-                return "Machine Empire"
-            }
-        },
-
-        GOV_HIVE_MIND("gov_hive_mind") {
-            override fun toString(): String {
-                return "Hive Mind"
-            }
-        },
-
-        GOV_CITIZEN_REPUBLIC("gov_citizen_republic") {
-            override fun toString(): String {
-                return "Citizen Republic"
-            }
-        },
-
-        GOV_REPRESENTATIVE_DEMOCRACY("gov_representative_democracy") {
-            override fun toString(): String {
-                return "Representative Democracy"
-            }
-        },
-
-        GOV_IRENIC_MONARCHY("gov_irenic_monarchy") {
-            override fun toString(): String {
-                return "Irenic Monarchy"
-            }
-        },
-
-        GOV_EXECUTIVE_COMMITTEE("gov_executive_committee") {
-            override fun toString(): String {
-                return "Executive Committee"
-            }
-        },
-
-        GOV_MILITARY_COMMISSARIAT("gov_military_commissariat") {
-            override fun toString(): String {
-                return "Military Commissariat"
-            }
-        },
-
         GOV_MARTIAL_EMPIRE("gov_martial_empire") {
             override fun toString(): String {
                 return "Martial Empire"
-            }
-        },
-
-        GOV_STAR_EMPIRE("gov_star_empire") {
-            override fun toString(): String {
-                return "Star Empire"
-            }
-        },
-
-        GOV_BANDIT_KINGDOM("gov_bandit_kingdom") {
-            override fun toString(): String {
-                return "Bandit Kingdom"
-            }
-        },
-
-        GOV_CRIMINAL_SYNDICATE("gov_criminal_syndicate") {
-            override fun toString(): String {
-                return "Criminal Syndicate"
-            }
-        },
-
-        GOV_TRADE_LEAGUE("gov_trade_league") {
-            override fun toString(): String {
-                return "Trade League"
             }
         },
 
@@ -196,18 +179,97 @@ data class UserEmpire(var speciesKey: String) {
             }
         },
 
+        GOV_MILITARY_COMMISSARIAT("gov_military_commissariat") {
+            override fun toString(): String {
+                return "Military Commissariat"
+            }
+        },
+
+        GOV_MILITARY_JUNTA("gov_military_junta") {
+            override fun toString(): String {
+                return "Military Junta"
+            }
+        },
+
+        GOV_REPRESENTATIVE_DEMOCRACY("gov_representative_democracy") {
+            override fun toString(): String {
+                return "Representative Democracy"
+            }
+        },
+
+        GOV_STAR_EMPIRE("gov_star_empire") {
+            override fun toString(): String {
+                return "Star Empire"
+            }
+        },
+
+        GOV_TRADE_LEAGUE("gov_trade_league") {
+            override fun toString(): String {
+                return "Trade League"
+            }
+        },
+
         Default("none_selected")
 
         // TODO("Requires completion.  Refer to: [https://stellaris.paradoxwikis.com/Government#Government_Type]")
     }
 
     /**
+     * The Advisor Voice for this Empire.
+     */
+    enum class AdvisorVoice(val repr: String) {
+        L_EVIL_CORP("l_evil_corp") {
+            override fun toString(): String {
+                return "Evil Corp"
+            }
+        },
+
+        L_NECROID_VIR("l_necroid_vir") {
+            override fun toString(): String {
+                return "Necroid"
+            }
+        },
+
+        L_PACIFIST("l_pacifist") {
+            override fun toString(): String {
+                return "Pacifist"
+            }
+        },
+
+        L_SLICK_CORP("l_slick_corp") {
+            override fun toString(): String {
+                return "Slick Corp"
+            }
+        },
+
+        L_SPIRITUALIST("l_spiritualist") {
+            override fun toString(): String {
+                return "Spiritualist"
+            }
+        },
+
+        L_THE_WORKER("l_the_worker") {
+            override fun toString(): String {
+                return "The Worker"
+            }
+        },
+
+        Default("none_selected")
+    }
+
+    /**
      * Planet Class is the Planet-type of the starting planet.
      */
     enum class PlanetClass(val repr: String) {
-        PC_MACHINE("pc_machine") {
+        PC_ARCTIC("pc_arctic") {
             override fun toString(): String {
-                return "Machine"
+                return "Arctic"
+            }
+        },
+
+        PC_ARID("pc_arid") {
+            override fun toString(): String {
+                return "Arid"
             }
         },
 
@@ -217,9 +279,21 @@ data class UserEmpire(var speciesKey: String) {
             }
         },
 
-        PC_ARID("pc_arid") {
+        PC_DESERT("pc_desert") {
             override fun toString(): String {
-                return "Arid"
+                return "Desert"
+            }
+        },
+
+        PC_HIVE("pc_hive") {
+            override fun toString(): String {
+                return "Hive"
+            }
+        },
+
+        PC_MACHINE("pc_machine") {
+            override fun toString(): String {
+                return "Machine"
             }
         },
 
@@ -322,6 +396,7 @@ data class UserEmpire(var speciesKey: String) {
                 "    adjective='$adjective'\n " +
                 "    authority=$authority\n " +
                 "    government=$government\n " +
+                "    advisorVoice=$advisorVoice\n " +
                 "    planetName='$planetName'\n " +
                 "    planetClass=$planetClass\n " +
                 "    systemName='$systemName'\n " +

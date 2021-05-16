@@ -62,6 +62,6 @@ object Resource {
     fun getUserEmpireList(): ArrayList<UserEmpire> {
         val userEmpireString: String = getUserEmpireAsString()
 
-        return empireParser(userEmpireString)
+        return EmpireParser().parseEmpire(userEmpireString)
     }
 }
