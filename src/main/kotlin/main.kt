@@ -24,9 +24,11 @@
  */
 
 import androidx.compose.desktop.Window
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -44,7 +46,7 @@ fun main() = Window(
 ) {
     // State management for the application
     var applicationState = remember { mutableStateOf<ApplicationState>(ApplicationState.Welcome) }
-    val logger = util.Logger.getLogger("Main")
+    val logger = util.Logger.getLogger(object {}.javaClass.enclosingMethod.name)
 
     // Container for all screens
     Column(
@@ -52,12 +54,17 @@ fun main() = Window(
             .fillMaxSize()
             .padding(CustomStyle.PadValue.standard)
     ) {
-        Row() {
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = CustomStyle.PadValue.double),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
             // Title text
-            title()
+            title(applicationState)
         }
 
-        Row() {
+        Row {
             // Application State handler
             applicationState = when (applicationState.value) {
                 ApplicationState.Welcome -> {

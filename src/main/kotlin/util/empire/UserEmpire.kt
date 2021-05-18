@@ -203,6 +203,12 @@ data class UserEmpire(var speciesKey: String) {
             }
         },
 
+        GOV_THEOCRATIC_REPUBLIC("gov_theocratic_republic") {
+            override fun toString(): String {
+                return "Theocratic Republic"
+            }
+        },
+
         GOV_TRADE_LEAGUE("gov_trade_league") {
             override fun toString(): String {
                 return "Trade League"
@@ -221,6 +227,12 @@ data class UserEmpire(var speciesKey: String) {
         L_EVIL_CORP("l_evil_corp") {
             override fun toString(): String {
                 return "Evil Corp"
+            }
+        },
+
+        L_HIVEMIND("l_hivemind") {
+            override fun toString(): String {
+                return "Hivemind"
             }
         },
 

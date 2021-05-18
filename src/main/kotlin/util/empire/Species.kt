@@ -30,7 +30,7 @@ data class Species(var name: String) {
     var portrait: String = ""
     var plural: String = ""
     var adjective: String = ""
-    var speciesBio: String = ""
+    var biography: String = ""
     var nameList: String = ""
     var traits: MutableList<String> = mutableListOf<String>()
 
@@ -41,7 +41,7 @@ data class Species(var name: String) {
                 "        portrait='$portrait'\n" +
                 "        plural='$plural'\n" +
                 "        adjective='$adjective'\n" +
-                "        speciesBio='$speciesBio'\n" +
+                "        speciesBio='$biography'\n" +
                 "        nameList='$nameList'\n" +
                 "        traits=$traits"
     }

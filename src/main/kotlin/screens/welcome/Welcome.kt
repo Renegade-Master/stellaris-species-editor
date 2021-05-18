@@ -43,7 +43,11 @@ import util.Resource
 
 @Composable
 fun welcomeScreen(appState: MutableState<ApplicationState>): MutableState<ApplicationState> {
+    val logger = util.Logger.getLogger(object {}.javaClass.enclosingMethod.name)
+
     val welcomeText = Resource.getStringResource("welcome-text-intro")
+    val quitButtonText = Resource.getStringResource("button-text-quit")
+    val startButtonText = Resource.getStringResource("button-text-start")
 
     Column(
         modifier = Modifier.fillMaxWidth(),
@@ -57,7 +61,7 @@ fun welcomeScreen(appState: MutableState<ApplicationState>): MutableState<Applic
             Text(
                 text = welcomeText,
                 textAlign = TextAlign.Justify,
-                style = CustomStyle.paragraphText()
+                style = CustomStyle.CustomText.paragraphText
             )
         }
 
@@ -75,7 +79,7 @@ fun welcomeScreen(appState: MutableState<ApplicationState>): MutableState<Applic
                     onClick = { appState.value = ApplicationState.Quitting }
                 ) {
                     Text(
-                        text = Resource.getStringResource("button-text-quit")
+                        text = quitButtonText
                     )
                 }
             }
@@ -88,7 +92,7 @@ fun welcomeScreen(appState: MutableState<ApplicationState>): MutableState<Applic
                     onClick = { appState.value = ApplicationState.EditFile }
                 ) {
                     Text(
-                        text = Resource.getStringResource("button-text-start")
+                        text = startButtonText
                     )
                 }
             }

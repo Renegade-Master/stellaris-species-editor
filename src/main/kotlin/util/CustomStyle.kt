@@ -44,21 +44,25 @@ object CustomStyle {
     }
 
     object PadValue {
-        val standard = 16.dp;
-        val double = standard * 2;
+        val standard = 16.dp
+        val double = standard * 2
+        val half = standard / 2
     }
 
-
-    fun titleText(): TextStyle {
-        return TextStyle(
+    object CustomText {
+        val titleText = TextStyle(
             color = Color.Black,
             fontWeight = FontWeight.ExtraBold,
             fontSize = FontSize.titleText
         )
-    }
 
-    fun paragraphText(): TextStyle {
-        return TextStyle(
+        val tagText = TextStyle(
+            color = Color.Black,
+            fontWeight = FontWeight.Bold,
+            fontSize = FontSize.paragraphText
+        )
+
+        val paragraphText = TextStyle(
             color = Color.Black,
             fontWeight = FontWeight.Normal,
             fontSize = FontSize.paragraphText

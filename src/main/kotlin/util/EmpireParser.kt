@@ -29,6 +29,7 @@ import util.empire.Species
 import util.empire.UserEmpire
 
 class EmpireParser {
+    val logger = Logger.getLogger(object {}.javaClass.name)
     private lateinit var it: ListIterator<String>
 
     fun parseEmpire(userEmpireString: String): ArrayList<UserEmpire> {
@@ -206,12 +207,12 @@ class EmpireParser {
         // Get the Species Bio
         currLine = it.safeNext()
         if (currLine.startsWith("\t\tspecies_bio=")) {
-            species.speciesBio =
+            species.biography =
                 currLine.substringAfter("species_bio=").removeSurrounding("\"")
 
             while (!currLine.endsWith('"')) {
                 currLine = it.safeNext()
-                species.speciesBio += "\n" +
+                species.biography += "\n" +
                         currLine.substringAfter("species_bio=").removeSurrounding("\"")
             }
         }

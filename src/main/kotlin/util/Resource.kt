@@ -27,9 +27,12 @@ package util
 
 import util.empire.UserEmpire
 import java.io.File
+import java.io.FileNotFoundException
 import java.io.InputStream
 
 object Resource {
+    private val logger = Logger.getLogger(object {}.javaClass.name)
+
     private const val stringFile = "/strings/common-strings.properties"
     private const val applicationPropertiesFile = "/application.properties"
 
@@ -43,7 +46,14 @@ object Resource {
     }
 
     private fun getUserEmpireAsString(): String {
-        val userEmpireFile = File(userEmpireLocation)
+        val userEmpireFile: File
+
+        try {
+            userEmpireFile = File(userEmpireLocation)
+        } catch (fnfe: FileNotFoundException) {
+            logger.error { "Could not find the 'user_empire_list' in the expected location." }
+            return ""
+        }
 
         return userEmpireFile
             .inputStream()
@@ -75,6 +85,6 @@ object Resource {
             }
         }
 
-        throw NoSuchFieldException("A Property resource with the requested ID could not be found.")
+        throw NoSuchFieldException("A Property resource with the requested ID [$id] could not be found.")
     }
 }

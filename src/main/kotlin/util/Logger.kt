@@ -41,19 +41,12 @@ private var KLogger.level: Level
  * Reads logging level by default from the application.properties file.
  */
 object Logger {
-    private var logger: KLogger = KotlinLogging.logger {}
+    private var loggerLevel: Level = Level.toLevel(Resource.getApplicationProperty("application-log-level"))
+    private var loggers: MutableMap<String, KLogger> = mutableMapOf<String, KLogger>()
+    private var logger: KLogger = getLogger(object {}.javaClass.name)
 
     init {
-        this.logger.level = Level.toLevel(Resource.getApplicationProperty("application-log-level"))
-        this.logger.debug { "Logger initialised!" }
-    }
-
-    /**
-     * @return: Generic Logger if it is not beneficial to state where a log originates.
-     */
-    fun getLogger(): KLogger {
-
-        return this.logger
+        this.logger.debug { "${this.logger.name} initialised!" }
     }
 
     /**
@@ -64,10 +57,27 @@ object Logger {
      *
      * @return A new KLogger instance.
      */
-    fun getLogger(name: String = "DefaultLogger", logLevel: Level = this.logger.level): KLogger {
-        val newLogger = KotlinLogging.logger(name)
-        newLogger.level = logLevel
+    fun getLogger(name: String = "DefaultLogger", logLevel: Level = this.loggerLevel): KLogger {
+        val newLogger: KLogger = loggers.getOrDefault(name, KotlinLogging.logger(name))
 
-        return KotlinLogging.logger(name)
+        if (this.loggers.values.isEmpty()) {
+            loggers.put(newLogger.name, newLogger)
+
+            return newLogger
+        }
+
+        if (!loggers.containsKey(newLogger.name)) {
+            newLogger.level = logLevel
+            this.logger.debug { "${newLogger.name} initialised!" }
+
+            loggers.put(newLogger.name, newLogger)
+            this.logger.debug { "Logger [${newLogger.name}] added" }
+        } else {
+            this.logger.debug { "Logger [${newLogger.name}] reused!" }
+        }
+
+        this.logger.debug { "Logger Map length: ${this.loggers.values.size}" }
+
+        return newLogger
     }
 }
