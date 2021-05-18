@@ -25,13 +25,56 @@
 
 package util
 
+import util.empire.UserEmpire
+import java.io.File
+import java.io.FileNotFoundException
+import java.io.InputStream
+
 object Resource {
+    private val logger = Logger.getLogger(object {}.javaClass.name)
+
     private const val stringFile = "/strings/common-strings.properties"
+    private const val applicationPropertiesFile = "/application.properties"
+
+    private val userEmpireLocation =
+        "${System.getenv("USERPROFILE")}\\Documents\\Paradox Interactive\\Stellaris\\user_empire_designs.txt"
 
     fun getStringResource(id: String): String {
         val resourceFile = javaClass.getResourceAsStream(stringFile)
 
-        resourceFile?.bufferedReader()?.lines()?.use { lines ->
+        return readResourceFile(resourceFile, id)
+    }
+
+    private fun getUserEmpireAsString(): String {
+        val userEmpireFile: File
+
+        try {
+            userEmpireFile = File(userEmpireLocation)
+        } catch (fnfe: FileNotFoundException) {
+            logger.error { "Could not find the 'user_empire_list' in the expected location." }
+            return ""
+        }
+
+        return userEmpireFile
+            .inputStream()
+            .readBytes()
+            .toString(Charsets.UTF_8)
+    }
+
+    fun getUserEmpireList(): ArrayList<UserEmpire> {
+        val userEmpireString: String = getUserEmpireAsString()
+
+        return EmpireParser().parseEmpire(userEmpireString)
+    }
+
+    fun getApplicationProperty(id: String): String {
+        val appProps = javaClass.getResourceAsStream(applicationPropertiesFile)
+
+        return readResourceFile(appProps, id)
+    }
+
+    private fun readResourceFile(resource: InputStream?, id: String): String {
+        resource?.bufferedReader()?.lines()?.use { lines ->
             for (it in lines) {
                 if (it.substringBefore("=") == id) {
                     return it
@@ -42,6 +85,6 @@ object Resource {
             }
         }
 
-        throw NoSuchFieldException()
+        throw NoSuchFieldException("A Property resource with the requested ID [$id] could not be found.")
     }
 }

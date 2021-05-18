@@ -3,14 +3,15 @@ import org.jetbrains.compose.desktop.application.dsl.TargetFormat
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
+    // Newest Kotlin version is 1.5.0, but that version will not compile
     kotlin("jvm") version "1.4.32"
 
-    // Newest compose version is 0.3.2, but that version will not compile
+    // Newest Compose version is 0.3.2, but that version will not compile
     id("org.jetbrains.compose") version "0.3.1"
 }
 
 group = "com.renegademaster"
-version = "1.0"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
@@ -22,6 +23,10 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.6.0")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.6.0")
     implementation(compose.desktop.currentOs)
+
+    // Logging libraries
+    compile("ch.qos.logback:logback-classic:1.2.3")
+    compile("io.github.microutils:kotlin-logging:2.0.6")
 }
 
 tasks.test {

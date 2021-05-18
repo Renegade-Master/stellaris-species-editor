@@ -26,11 +26,12 @@
 import androidx.compose.desktop.Window
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import screens.ApplicationState
 import screens.edit.editFileScreen
@@ -45,29 +46,42 @@ fun main() = Window(
 ) {
     // State management for the application
     var applicationState = remember { mutableStateOf<ApplicationState>(ApplicationState.Welcome) }
+    val logger = util.Logger.getLogger(object {}.javaClass.enclosingMethod.name)
 
     // Container for all screens
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .padding(CustomStyle.PadValue.standard),
-        verticalArrangement = Arrangement.SpaceBetween,
-        horizontalAlignment = Alignment.CenterHorizontally
+            .padding(CustomStyle.PadValue.standard)
     ) {
-        // Title text
-        title()
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(bottom = CustomStyle.PadValue.double),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            // Title text
+            title(applicationState)
+        }
 
-        // Application State handler
-        applicationState = when (applicationState.value) {
-            ApplicationState.Welcome -> {
-                welcomeScreen(applicationState)
+        Row {
+            // Application State handler
+            applicationState = when (applicationState.value) {
+                ApplicationState.Welcome -> {
+                    logger.debug { "Entering WelcomeScreen" }
+                    welcomeScreen(applicationState)
+                }
+
+                ApplicationState.EditFile -> {
+                    logger.debug { "Entering EditFile" }
+                    editFileScreen(applicationState)
+                }
+
+                ApplicationState.Quitting -> {
+                    logger.debug { "Quitting application" }
+                    exitProcess(0)
+                }
             }
-
-            ApplicationState.EditFile -> {
-                editFileScreen(applicationState)
-            }
-
-            ApplicationState.Quitting -> exitProcess(0)
         }
     }
 }

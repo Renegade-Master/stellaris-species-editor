@@ -23,49 +23,36 @@
  *
  */
 
-package util
+package util.empire
 
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+data class Ruler(val name: String) {
+    val gender: Gender = Gender.Default
+    val portrait: Portrait = Portrait.Default
+    val texture: Int = 0
+    val hair: Int = 0
+    val clothes: Int = 0
+    val rulerTitle: String = ""
+    val leaderClass: String = ""
 
-object CustomStyle {
-    private object FontSize {
-        val titleText = 24.sp
-        val paragraphText = 16.sp
+
+    enum class Gender(val repr: String) {
+        FEMALE("FEMALE") {
+            override fun toString(): String {
+                return "Female"
+            }
+        },
+
+        MALE("MALE") {
+            override fun toString(): String {
+                return "Male"
+            }
+        },
+
+        Default("none_selected")
     }
 
-    object DropDownSize {
-        val short = 200.dp
-        val medium = 500.dp
-        val long = 1000.dp
+    enum class Portrait(val repr: String) {
+        Default("none_selected")
     }
 
-    object PadValue {
-        val standard = 16.dp
-        val double = standard * 2
-        val half = standard / 2
-    }
-
-    object CustomText {
-        val titleText = TextStyle(
-            color = Color.Black,
-            fontWeight = FontWeight.ExtraBold,
-            fontSize = FontSize.titleText
-        )
-
-        val tagText = TextStyle(
-            color = Color.Black,
-            fontWeight = FontWeight.Bold,
-            fontSize = FontSize.paragraphText
-        )
-
-        val paragraphText = TextStyle(
-            color = Color.Black,
-            fontWeight = FontWeight.Normal,
-            fontSize = FontSize.paragraphText
-        )
-    }
 }

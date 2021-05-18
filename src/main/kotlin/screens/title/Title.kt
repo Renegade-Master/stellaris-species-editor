@@ -26,25 +26,102 @@
 package screens.title
 
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import screens.ApplicationState
 import util.CustomStyle
 import util.Resource
 
 @Composable
-fun title() {
+fun title(state: MutableState<ApplicationState>) {
+    val logger = util.Logger.getLogger(object {}.javaClass.enclosingMethod.name)
+
     val headerText = Resource.getStringResource("application-header")
+    val backButtonText = Resource.getStringResource("button-text-back")
+    val saveButtonText = Resource.getStringResource("button-text-save")
+    val quitButtonText = Resource.getStringResource("button-text-quit")
+
+    val backButtonWeight: Float = 1.0f / 3.0f
+    val headerTextWeight: Float = 1.0f / 3.0f
+    val saveButtonWeight: Float = 1.0f / 6.0f
+    val quitButtonWeight: Float = 1.0f / 6.0f
 
     // Title Row
-    Row(
-        horizontalArrangement = Arrangement.Center,
-        verticalAlignment = Alignment.CenterVertically
+    Column(
+        modifier = Modifier
+            .fillMaxWidth(),
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Text(
-            text = headerText,
-            style = CustomStyle.titleText()
-        )
+        Row(
+            modifier = Modifier
+                .fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
+            Column(
+                modifier = Modifier
+                    .weight(weight = backButtonWeight),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                if (state.value != ApplicationState.Welcome) {
+                    Button(
+                        onClick = { logger.debug { "Back button clicked" }; state.value = ApplicationState.Welcome }
+                    ) {
+                        Text(
+                            text = backButtonText
+                        )
+                    }
+                }
+            }
+
+            Column(
+                modifier = Modifier
+                    .weight(weight = headerTextWeight),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                Text(
+                    text = headerText,
+                    style = CustomStyle.CustomText.titleText
+                )
+            }
+
+            Column(
+                modifier = Modifier
+                    .weight(weight = saveButtonWeight),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                if (state.value != ApplicationState.Welcome) {
+                    Button(
+                        onClick = { logger.debug { "Save button clicked" }; state.value = ApplicationState.EditFile }
+                    ) {
+                        Text(
+                            text = saveButtonText
+                        )
+                    }
+                }
+            }
+
+            Column(
+                modifier = Modifier
+                    .weight(weight = quitButtonWeight),
+                horizontalAlignment = Alignment.CenterHorizontally
+            ) {
+                if (state.value != ApplicationState.Welcome) {
+                    Button(
+                        onClick = { logger.debug { "Quit button clicked" }; state.value = ApplicationState.Quitting }
+                    ) {
+                        Text(
+                            text = quitButtonText
+                        )
+                    }
+                }
+            }
+        }
     }
 }

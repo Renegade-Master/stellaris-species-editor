@@ -23,49 +23,28 @@
  *
  */
 
-package util
+package util.empire
 
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.TextStyle
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+data class Species(var name: String) {
+    var speciesClass: String = ""
+    var portrait: String = ""
+    var plural: String = ""
+    var adjective: String = ""
+    var biography: String = ""
+    var nameList: String = ""
+    var traits: MutableList<String> = mutableListOf<String>()
 
-object CustomStyle {
-    private object FontSize {
-        val titleText = 24.sp
-        val paragraphText = 16.sp
+    override fun toString(): String {
+        return "Species:\n" +
+                "        name='$name'\n" +
+                "        speciesClass='$speciesClass'\n" +
+                "        portrait='$portrait'\n" +
+                "        plural='$plural'\n" +
+                "        adjective='$adjective'\n" +
+                "        speciesBio='$biography'\n" +
+                "        nameList='$nameList'\n" +
+                "        traits=$traits"
     }
 
-    object DropDownSize {
-        val short = 200.dp
-        val medium = 500.dp
-        val long = 1000.dp
-    }
 
-    object PadValue {
-        val standard = 16.dp
-        val double = standard * 2
-        val half = standard / 2
-    }
-
-    object CustomText {
-        val titleText = TextStyle(
-            color = Color.Black,
-            fontWeight = FontWeight.ExtraBold,
-            fontSize = FontSize.titleText
-        )
-
-        val tagText = TextStyle(
-            color = Color.Black,
-            fontWeight = FontWeight.Bold,
-            fontSize = FontSize.paragraphText
-        )
-
-        val paragraphText = TextStyle(
-            color = Color.Black,
-            fontWeight = FontWeight.Normal,
-            fontSize = FontSize.paragraphText
-        )
-    }
 }
