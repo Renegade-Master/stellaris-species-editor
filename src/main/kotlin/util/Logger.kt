@@ -43,10 +43,10 @@ private var KLogger.level: Level
 object Logger {
     private var loggerLevel: Level = Level.toLevel(Resource.getApplicationProperty("application-log-level"))
     private var loggers: MutableMap<String, KLogger> = mutableMapOf<String, KLogger>()
-    private var logger: KLogger = getLogger(object {}.javaClass.name)
+    private var log: KLogger = getLogger(object {}.javaClass.name)
 
     init {
-        this.logger.debug { "${this.logger.name} initialised!" }
+        this.log.debug { "${this.log.name} initialised!" }
     }
 
     /**
@@ -68,15 +68,15 @@ object Logger {
 
         if (!loggers.containsKey(newLogger.name)) {
             newLogger.level = logLevel
-            this.logger.debug { "${newLogger.name} initialised!" }
+            this.log.debug { "${newLogger.name} initialised!" }
 
             loggers.put(newLogger.name, newLogger)
-            this.logger.debug { "Logger [${newLogger.name}] added" }
+            this.log.debug { "Logger [${newLogger.name}] added" }
         } else {
-            this.logger.debug { "Logger [${newLogger.name}] reused!" }
+            this.log.debug { "Logger [${newLogger.name}] reused!" }
         }
 
-        this.logger.debug { "Logger Map length: ${this.loggers.values.size}" }
+        this.log.debug { "Logger Map length: ${this.loggers.values.size}" }
 
         return newLogger
     }

@@ -26,14 +26,12 @@
 package util.empire
 
 data class EmpireFlag(val flagKey: String) {
-    object icon {
+    object Icon {
         val iconCategory: String = ""
         val iconFile: String = ""
     }
 
-    object background {
-
-    }
+    object Background
 
     val colours: Array<String> = arrayOf<String>()
 }

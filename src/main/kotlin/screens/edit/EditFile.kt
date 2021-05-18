@@ -79,6 +79,11 @@ fun editFileScreen(appState: MutableState<ApplicationState>): MutableState<Appli
 
     val editScreenScrollState = rememberScrollState()
 
+    val speciesTagWeight: Float = 0.10f
+    val speciesListerWeight: Float = 0.20f
+    val biographyTagWeight: Float = 0.15f
+    val biographyContentWeight: Float = 0.55f
+
     logger.trace { "User Empire Count: ${userEmpireList.size}" }
     logger.trace { "Names: ${userEmpireList.joinToString { ue -> ue.name }}" }
     logger.trace { "All Empires:\n${userEmpireList.joinToString { ue -> ue.toString() }}" }
@@ -99,7 +104,7 @@ fun editFileScreen(appState: MutableState<ApplicationState>): MutableState<Appli
             // Species Selection
             Column(
                 modifier = Modifier
-                    .weight(0.10f),
+                    .weight(weight = speciesTagWeight),
             ) {
                 Text(
                     modifier = Modifier
@@ -115,7 +120,7 @@ fun editFileScreen(appState: MutableState<ApplicationState>): MutableState<Appli
             // Species lister
             Column(
                 modifier = Modifier
-                    .weight(0.20f),
+                    .weight(weight = speciesListerWeight),
                 horizontalAlignment = Alignment.End
             ) {
                 Row(
@@ -168,7 +173,7 @@ fun editFileScreen(appState: MutableState<ApplicationState>): MutableState<Appli
             // Biography tag
             Column(
                 modifier = Modifier
-                    .weight(0.15f),
+                    .weight(weight = biographyTagWeight),
             ) {
                 Text(
                     modifier = Modifier
@@ -181,7 +186,7 @@ fun editFileScreen(appState: MutableState<ApplicationState>): MutableState<Appli
             // Biography content
             Column(
                 modifier = Modifier
-                    .weight(0.55f),
+                    .weight(biographyContentWeight),
             ) {
                 TextField(
                     modifier = Modifier

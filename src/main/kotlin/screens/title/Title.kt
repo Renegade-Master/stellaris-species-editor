@@ -48,6 +48,11 @@ fun title(state: MutableState<ApplicationState>) {
     val saveButtonText = Resource.getStringResource("button-text-save")
     val quitButtonText = Resource.getStringResource("button-text-quit")
 
+    val backButtonWeight: Float = 1.0f / 3.0f
+    val headerTextWeight: Float = 1.0f / 3.0f
+    val saveButtonWeight: Float = 1.0f / 6.0f
+    val quitButtonWeight: Float = 1.0f / 6.0f
+
     // Title Row
     Column(
         modifier = Modifier
@@ -61,7 +66,7 @@ fun title(state: MutableState<ApplicationState>) {
         ) {
             Column(
                 modifier = Modifier
-                    .weight(weight = 1.0f / 3.0f),
+                    .weight(weight = backButtonWeight),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 if (state.value != ApplicationState.Welcome) {
@@ -77,7 +82,7 @@ fun title(state: MutableState<ApplicationState>) {
 
             Column(
                 modifier = Modifier
-                    .weight(weight = 1.0f / 3.0f),
+                    .weight(weight = headerTextWeight),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Text(
@@ -88,7 +93,7 @@ fun title(state: MutableState<ApplicationState>) {
 
             Column(
                 modifier = Modifier
-                    .weight(weight = 1.0f / 6.0f),
+                    .weight(weight = saveButtonWeight),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 if (state.value != ApplicationState.Welcome) {
@@ -104,7 +109,7 @@ fun title(state: MutableState<ApplicationState>) {
 
             Column(
                 modifier = Modifier
-                    .weight(weight = 1.0f / 6.0f),
+                    .weight(weight = quitButtonWeight),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 if (state.value != ApplicationState.Welcome) {
