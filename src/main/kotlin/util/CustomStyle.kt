@@ -37,6 +37,12 @@ object CustomStyle {
         val paragraphText = 16.sp
     }
 
+    object RowHeight {
+        val narrow = 32.dp
+        val normal = 64.dp
+        val tall = 96.dp
+    }
+
     object DropDownSize {
         val short = 200.dp
         val medium = 500.dp

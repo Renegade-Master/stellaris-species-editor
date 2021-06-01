@@ -6,6 +6,7 @@ name: Gradle Build on PR
 on:
   push:
     branches:
+      - require/review/*
       - require/review
 
 jobs:

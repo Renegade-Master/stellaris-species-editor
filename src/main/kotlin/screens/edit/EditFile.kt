@@ -32,7 +32,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.requiredHeightIn
 import androidx.compose.foundation.layout.requiredSizeIn
+import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.DropdownMenu
@@ -97,7 +99,8 @@ fun editFileScreen(appState: MutableState<ApplicationState>): MutableState<Appli
         // Species Selection and Biography
         Row(
             modifier = Modifier
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .requiredHeightIn(max = CustomStyle.RowHeight.tall),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically
         ) {
@@ -137,7 +140,8 @@ fun editFileScreen(appState: MutableState<ApplicationState>): MutableState<Appli
                             modifier = Modifier,
                         ) {
                             IconButton(onClick = {
-                                logger.debug { "Species DropDownMenu Expanded" }; speciesDdmExpanded.value = true
+                                logger.debug { "Species DropDownMenu Expanded" }
+                                speciesDdmExpanded.value = true
                             }) {
                                 Icon(
                                     Icons.Filled.MoreVert,
@@ -190,8 +194,9 @@ fun editFileScreen(appState: MutableState<ApplicationState>): MutableState<Appli
             ) {
                 TextField(
                     modifier = Modifier
-                        .fillMaxWidth(),
-                    value = "TestString",
+                        .fillMaxWidth()
+                        .wrapContentHeight(unbounded = false),
+                    value = userEmpireList[currentSpecies.value].primarySpecies.biography,
                     onValueChange = {},
                     enabled = false,
                 )
@@ -202,6 +207,9 @@ fun editFileScreen(appState: MutableState<ApplicationState>): MutableState<Appli
         Row(
             modifier = Modifier
                 .fillMaxWidth()
+                .requiredHeightIn(max = CustomStyle.RowHeight.normal),
+            horizontalArrangement = Arrangement.SpaceBetween,
+            verticalAlignment = Alignment.CenterVertically
         ) {
             Text(
                 text = "$adjectiveTag: ${userEmpireList[currentSpecies.value].adjective}"
