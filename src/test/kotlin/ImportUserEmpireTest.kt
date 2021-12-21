@@ -1,6 +1,3 @@
-
-import dao.empire.UserEmpire
-import mapper.UserEmpireMapper
 import mu.KotlinLogging
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.MethodOrderer

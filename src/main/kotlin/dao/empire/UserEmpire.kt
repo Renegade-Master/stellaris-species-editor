@@ -1,4 +1,3 @@
-
 package dao.empire
 
 data class UserEmpire(var speciesKey: String) {

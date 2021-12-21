@@ -1,4 +1,3 @@
-
 package dao.empire
 
 data class Ruler(val name: String) {
