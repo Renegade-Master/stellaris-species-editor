@@ -12,16 +12,18 @@ version = "2.0.0"
 
 repositories {
     google()
-    mavenCentral()
     maven("https://maven.pkg.jetbrains.space/public/p/compose/dev")
+    mavenCentral()
 }
 
 dependencies {
-    testImplementation(kotlin("test"))
-    implementation(compose.desktop.currentOs)
-    implementation("org.slf4j:slf4j-simple:1.7.32")
-    implementation("io.github.microutils:kotlin-logging:2.1.16")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.0")
+    implementation("io.github.microutils:kotlin-logging:2.1.16")
+    implementation("org.jetbrains.kotlin:kotlin-reflect:1.6.0")
+    implementation("org.slf4j:slf4j-simple:1.7.32")
+    implementation(compose.desktop.currentOs)
+
+    testImplementation(kotlin("test"))
 }
 
 tasks.test {
