@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Source" pattern="file[stellaris-species-editor*]:*//*&amp;&amp;!file[stellaris-species-editor]:.github/workflows//*&amp;&amp;!file[stellaris-species-editor]:.idea//*&amp;&amp;!file[stellaris-species-editor]:.idea/codeStyles//*&amp;&amp;!file[stellaris-species-editor]:.idea/copyright//*&amp;&amp;!file[stellaris-species-editor]:.idea/scopes//*&amp;&amp;!file[stellaris-species-editor]:Diagrams/Layouts//*&amp;&amp;!file[stellaris-species-editor]:gradle/wrapper//*&amp;&amp;!file[stellaris-species-editor.test]:resources//*" />
+</component>
