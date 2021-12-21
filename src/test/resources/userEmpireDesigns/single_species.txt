@@ -1,0 +1,64 @@
+"Vool Democratic Realms"
+={
+    key="Vool Democratic Realms"
+    ship_prefix="ISS"
+    species={
+        class="FUN"
+        portrait="fun11"
+        name="Vool"
+        plural="Voolians"
+        adjective="Vool"
+        name_list="FUN2"
+        trait="trait_solitary"
+        trait="trait_intelligent"
+        trait="trait_rapid_breeders"
+        trait="trait_quarrelsome"
+    }
+    name="Vool Democratic Realms"
+    adjective="Vool"
+    authority="auth_democratic"
+    government="gov_theocratic_republic"
+    planet_name="Vool'u"
+    planet_class="pc_tropical"
+    system_name="Vool'u-Umu"
+    initializer=""
+    graphical_culture="nemesis_01"
+    city_graphical_culture="necroid_01"
+    empire_flag={
+        icon={
+            category="ornate"
+            file="flag_ornate_9.dds"
+        }
+        background={
+            category="backgrounds"
+            file="v.dds"
+        }
+        colors={
+            "red"
+            "black"
+            "null"
+            "null"
+        }
+    }
+    ruler={
+        gender=female
+        name="Pubgluurh"
+        portrait="fun11"
+        texture=0
+        hair=0
+        clothes=0
+        leader_class="ruler"
+    }
+    spawn_as_fallen=no
+    ignore_portrait_duplication=no
+    room="organic_room"
+    spawn_enabled=yes
+    ethic="ethic_egalitarian"
+    ethic="ethic_xenophile"
+    ethic="ethic_spiritualist"
+    civics={
+        "civic_reanimated_armies"
+        "civic_death_cult"
+    }
+    origin="origin_remnants"
+}

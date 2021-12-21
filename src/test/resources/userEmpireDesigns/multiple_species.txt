@@ -1,0 +1,405 @@
+"Maloqui Alliance"
+={
+    key="Maloqui Alliance"
+    ship_prefix="Herse"
+    species={
+        class="NECROID"
+        portrait="nec10"
+        name="Maloqui"
+        plural="Maloqui"
+        adjective="Maloquian"
+        name_list="NECROID3"
+        trait="trait_necrophage"
+        trait="trait_rapid_breeders"
+        trait="trait_nonadaptive"
+        trait="trait_docile"
+        trait="trait_fleeting"
+        trait="trait_communal"
+    }
+    secondary_species={
+        class="LITHOID"
+        portrait="lith15"
+        name="Bruvan"
+        plural="Bruvans"
+        adjective="Bruvan"
+        name_list="HUM1"
+        trait="trait_lithoid"
+        trait="trait_very_strong"
+        trait="trait_sedentary"
+        trait="trait_lithoid_scintillating"
+        trait="trait_repugnant"
+    }
+    name="Maloqui Alliance"
+    adjective="Maloquian"
+    authority="auth_oligarchic"
+    government="gov_military_junta"
+    advisor_voice_type="l_necroid_vir"
+    planet_name="Prakla"
+    planet_class="pc_continental"
+    system_name="Juiko"
+    initializer=""
+    graphical_culture="necroid_01"
+    city_graphical_culture="necroid_01"
+    empire_flag={
+        icon={
+            category="legion"
+            file="flag_mp_beta_03.dds"
+        }
+        background={
+            category="backgrounds"
+            file="v.dds"
+        }
+        colors={
+            "black"
+            "black"
+            "null"
+            "null"
+        }
+    }
+    ruler={
+        gender=female
+        name="Xat qutl Euyoma"
+        portrait="nec10"
+        texture=0
+        hair=0
+        clothes=0
+        leader_class="ruler"
+    }
+    spawn_as_fallen=no
+    ignore_portrait_duplication=no
+    room="default_room"
+    spawn_enabled=no
+    ethic="ethic_fanatic_militarist"
+    ethic="ethic_spiritualist"
+    civics={
+        "civic_memorialist"
+        "civic_reanimated_armies"
+    }
+    origin="origin_necrophage"
+}
+"Money Grubber Trade Union"
+={
+    key="Money Grubber Trade Union"
+    ship_prefix="Corporate Lease"
+    species={
+        class="HUM"
+        portrait="human"
+        name="Money Grubber"
+        plural="Money Grubber'"
+        adjective="Grubber"
+        name_list="HUMAN3"
+        trait="trait_thrifty"
+        trait="trait_sedentary"
+        trait="trait_weak"
+        trait="trait_ingenious"
+    }
+    name="Money Grubber Trade Union"
+    adjective="Money Grubberan"
+    authority="auth_corporate"
+    government="gov_trade_league"
+    advisor_voice_type="l_slick_corp"
+    planet_name="Corporate Headquarters"
+    planet_class="pc_continental"
+    system_name="HQ"
+    initializer=""
+    graphical_culture="humanoid_01"
+    city_graphical_culture="mammalian_01"
+    empire_flag={
+        icon={
+            category="pointy"
+            file="flag_pointy_2.dds"
+        }
+        background={
+            category="backgrounds"
+            file="stripes.dds"
+        }
+        colors={
+            "yellow"
+            "black"
+            "null"
+            "null"
+        }
+    }
+    ruler={
+        gender=female
+        name="Tertia Cotius"
+        portrait="human_female_04"
+        texture=0
+        hair=0
+        clothes=4
+        leader_class="ruler"
+    }
+    spawn_as_fallen=no
+    ignore_portrait_duplication=no
+    room="default_room"
+    spawn_enabled=yes
+    ethic="ethic_fanatic_xenophile"
+    ethic="ethic_materialist"
+    civics={
+        "civic_franchising"
+        "civic_free_traders"
+    }
+    origin="origin_default"
+}
+"Khessam Commerce League"
+={
+    key="Khessam Commerce League"
+    ship_prefix="ISS"
+    species={
+        class="AVI"
+        portrait="avi16"
+        name="Khessam"
+        plural="Khessam"
+        adjective="Khessam"
+        name_list="1-NSC-Humanoid"
+        trait="trait_thrifty"
+        trait="trait_nonadaptive"
+        trait="trait_intelligent"
+        trait="trait_sedentary"
+        trait="trait_quick_learners"
+    }
+    name="Khessam Commerce League"
+    adjective="Khessam"
+    authority="auth_corporate"
+    government="gov_trade_league"
+    advisor_voice_type="l_evil_corp"
+    planet_name="Khessar Toralis"
+    planet_class="pc_continental"
+    system_name="Khessar"
+    initializer="giga_penrose_system"
+    graphical_culture="mammalian_01"
+    city_graphical_culture="mammalian_01"
+    empire_flag={
+        icon={
+            category="flusionian"
+            file="sergeant_flag.dds"
+        }
+        background={
+            category="backgrounds"
+            file="hex.dds"
+        }
+        colors={
+            "dark_purple"
+            "black"
+            "null"
+            "null"
+        }
+    }
+    ruler={
+        gender=male
+        name="Lathir den Fum"
+        portrait="avi16"
+        texture=0
+        hair=0
+        clothes=4
+        leader_class="ruler"
+    }
+    spawn_as_fallen=no
+    ignore_portrait_duplication=no
+    room="personality_hegemonic_imperialists_room"
+    spawn_enabled=yes
+    ethic="ethic_fanatic_xenophile"
+    ethic="ethic_materialist"
+    civics={
+        "civic_free_traders"
+        "civic_public_relations_specialists"
+    }
+    origin="origin_default"
+}
+"The Dankaterie Juan's"
+={
+    key="The Dankaterie Juan's"
+    ship_prefix="Meme Boat"
+    species={
+        class="REP"
+        portrait="rep16"
+        name="Dankaterie"
+        plural="Dankaterie"
+        adjective="Dankat "
+        species_bio="We shall bring about the day of the Dankest meme and then we shall have....... 'E'"
+        name_list="HUMAN3"
+        trait="trait_intelligent"
+        trait="trait_fleeting"
+        trait="trait_sedentary"
+        trait="trait_natural_sociologists"
+        trait="trait_traditional"
+    }
+    name="The Dankaterie Juan's"
+    adjective="Danketerie"
+    authority="auth_imperial"
+    government="gov_martial_empire"
+    advisor_voice_type="l_spiritualist"
+    planet_name="Juan"
+    planet_class="pc_desert"
+    system_name="E"
+    initializer=""
+    graphical_culture="nemesis_01"
+    city_graphical_culture="reptilian_01"
+    empire_flag={
+        icon={
+            category="legion"
+            file="flag_mp_beta_03.dds"
+        }
+        background={
+            category="backgrounds"
+            file="circle.dds"
+        }
+        colors={
+            "indigo"
+            "black"
+            "null"
+            "null"
+        }
+    }
+    ruler={
+        gender=female
+        name="Juan"
+        portrait="rep16_f"
+        texture=0
+        hair=0
+        clothes=0
+        ruler_title_female="Memepress"
+        heir_title_female="Crown Memecess"
+        leader_class="ruler"
+    }
+    spawn_as_fallen=no
+    ignore_portrait_duplication=no
+    room="default_room"
+    spawn_enabled=yes
+    ethic="ethic_militarist"
+    ethic="ethic_fanatic_spiritualist"
+    civics={
+        "civic_warrior_culture"
+        "civic_byzantine_bureaucracy"
+    }
+    origin="origin_remnants"
+}
+"Totally Legitimate Enterprises"
+={
+    key="Totally Legitimate Enterprises"
+    ship_prefix="Ghetto Mobile"
+    species={
+        class="REP"
+        portrait="rep16"
+        name="The Dodgy Boys"
+        plural="Dodgies"
+        adjective="Dodgy"
+        name_list="REP4"
+        trait="trait_thrifty"
+        trait="trait_slow_learners"
+        trait="trait_weak"
+        trait="trait_intelligent"
+    }
+    name="Totally Legitimate Enterprises"
+    adjective="Leigit Enterprises"
+    authority="auth_corporate"
+    government="gov_criminal_syndicate"
+    advisor_voice_type="l_evil_corp"
+    planet_name="Legitimate Prime"
+    planet_class="pc_desert"
+    system_name="Legite"
+    initializer=""
+    graphical_culture="nemesis_01"
+    city_graphical_culture="reptilian_01"
+    empire_flag={
+        icon={
+            category="domination"
+            file="domination_18.dds"
+        }
+        background={
+            category="backgrounds"
+            file="00_solid.dds"
+        }
+        colors={
+            "indigo"
+            "red"
+            "null"
+            "null"
+        }
+    }
+    ruler={
+        gender=female
+        name="Capone"
+        portrait="rep16_f"
+        texture=0
+        hair=0
+        clothes=0
+        ruler_title_female="Don"
+        leader_class="ruler"
+    }
+    spawn_as_fallen=no
+    ignore_portrait_duplication=no
+    room="default_room"
+    spawn_enabled=yes
+    ethic="ethic_xenophile"
+    ethic="ethic_fanatic_materialist"
+    civics={
+        "civic_criminal_heritage"
+        "civic_free_traders"
+    }
+    origin="origin_remnants"
+}
+"Khell'Zen Cabal"
+={
+    key="Khell'Zen Cabal"
+    ship_prefix="ISS"
+    species={
+        class="HUM"
+        portrait="humanoid_hp_13"
+        name="Khell'Zen"
+        plural="Khell'Zen"
+        adjective="Khell'Zen"
+        name_list="HUM1"
+        trait="trait_extremely_adaptive"
+        trait="trait_slow_breeders"
+        trait="trait_unruly"
+        trait="trait_conservational"
+        trait="trait_nomadic"
+    }
+    name="Khell'Zen Cabal"
+    adjective="Khell'Zen"
+    authority="auth_imperial"
+    government="gov_bandit_kingdom"
+    planet_name="Oros"
+    planet_class="pc_continental"
+    system_name="Cevant"
+    initializer=""
+    graphical_culture="nemesis_01"
+    city_graphical_culture="mammalian_01"
+    empire_flag={
+        icon={
+            category="domination"
+            file="domination_9.dds"
+        }
+        background={
+            category="backgrounds"
+            file="00_solid.dds"
+        }
+        colors={
+            "dark_blue"
+            "black"
+            "null"
+            "null"
+        }
+    }
+    ruler={
+        gender=female
+        name="Jaffaba"
+        portrait="humanoid_hp_13_female"
+        texture=0
+        hair=0
+        clothes=4
+        leader_class="ruler"
+    }
+    spawn_as_fallen=no
+    ignore_portrait_duplication=no
+    room="default_room"
+    spawn_enabled=yes
+    ethic="ethic_xenophobe"
+    ethic="ethic_fanatic_militarist"
+    civics={
+        "civic_barbaric_despoilers"
+        "civic_byzantine_bureaucracy"
+    }
+    origin="origin_remnants"
+}

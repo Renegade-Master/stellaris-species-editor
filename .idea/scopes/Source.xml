@@ -1,3 +1,0 @@
-<component name="DependencyValidationManager">
-  <scope name="Source" pattern="file[stellaris-species-editor.main]:kotlin//*" />
-</component>
