@@ -231,4 +231,14 @@ gradle-app.setting
 .classpath
 
 # End of https://www.toptal.com/developers/gitignore/api/kotlin,intellij+all,java,windows,linux,macos,gradle
-n
+
+### Exceptions ###
+# IntelliJ
+!.idea/.gitignore
+!.idea/compiler.xml
+!.idea/copyright/**.xml
+!.idea/gradle.xml
+!.idea/jarRepositories.xml
+!.idea/kotlinc.xml
+!.idea/scopes/**.xml
+!.idea/vcs.xml
