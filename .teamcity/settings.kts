@@ -2,6 +2,7 @@ import jetbrains.buildServer.configs.kotlin.v2019_2.*
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.swabra
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.gradle
+import jetbrains.buildServer.configs.kotlin.v2019_2.projectFeatures.githubIssues
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
 
 /*
@@ -31,6 +32,14 @@ version = "2021.2"
 project {
 
     buildType(Build)
+
+    features {
+        githubIssues {
+            id = "PROJECT_EXT_4"
+            displayName = "Renegade-Master/stellaris-species-editor"
+            repositoryURL = "https://github.com/Renegade-Master/stellaris-species-editor"
+        }
+    }
 }
 
 object Build : BuildType({
