@@ -17,10 +17,10 @@ repositories {
 }
 
 dependencies {
-    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.0")
-    implementation("io.github.microutils:kotlin-logging:2.1.16")
+    implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.1")
+    implementation("io.github.microutils:kotlin-logging:2.1.21")
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.6.0")
-    implementation("org.slf4j:slf4j-simple:1.7.32")
+    implementation("org.slf4j:slf4j-simple:1.7.36")
     implementation(compose.desktop.currentOs)
 
     testImplementation(kotlin("test"))

@@ -1,9 +1,12 @@
-import jetbrains.buildServer.configs.kotlin.v2019_2.*
+import jetbrains.buildServer.configs.kotlin.v2019_2.BuildType
+import jetbrains.buildServer.configs.kotlin.v2019_2.DslContext
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.perfmon
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildFeatures.swabra
 import jetbrains.buildServer.configs.kotlin.v2019_2.buildSteps.gradle
 import jetbrains.buildServer.configs.kotlin.v2019_2.projectFeatures.githubIssues
+import jetbrains.buildServer.configs.kotlin.v2019_2.project
 import jetbrains.buildServer.configs.kotlin.v2019_2.triggers.vcs
+import jetbrains.buildServer.configs.kotlin.v2019_2.version
 
 /*
 The settings script is an entry point for defining a TeamCity
@@ -43,7 +46,9 @@ project {
 }
 
 object Build : BuildType({
-    name = "Build"
+    name = "Build and Test"
+    buildNumberPattern = "%build.counter% - [%vcsroot.username%] - %build.vcs.number%"
+
 
     vcs {
         root(DslContext.settingsRoot)
@@ -51,7 +56,18 @@ object Build : BuildType({
 
     steps {
         gradle {
-            tasks = "clean build test"
+            name = "Gradle Clean"
+            tasks = "clean"
+        }
+
+        gradle {
+            name = "Gradle Build"
+            tasks = "assemble"
+        }
+
+        gradle {
+            name = "Gradle Test"
+            tasks = "test"
         }
     }
 

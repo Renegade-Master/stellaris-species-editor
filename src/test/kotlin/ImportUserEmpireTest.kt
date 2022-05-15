@@ -1,10 +1,14 @@
+import dao.empire.UserEmpire
+import mapper.UserEmpireMapper
 import mu.KotlinLogging
 import org.junit.jupiter.api.Assertions.assertEquals
 import org.junit.jupiter.api.MethodOrderer
 import org.junit.jupiter.api.Order
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestMethodOrder
+import kotlin.reflect.full.memberProperties
 import kotlin.test.assertNotNull
+import kotlin.test.assertTrue
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation::class)
 class ImportUserEmpireTest {
@@ -29,6 +33,19 @@ class ImportUserEmpireTest {
         logger.info { "Test Step $currentStep: End" }
 
         logger.info { "Test Step ${++currentStep}: Import User Empire" }
-//        val empire: UserEmpire = UserEmpireMapper.map(resource.readText())
+
+        val empires: ArrayList<UserEmpire> = UserEmpireMapper.parseEmpire(resource.readText())
+        assertTrue("There are no entries in the User Empire list.") { empires.size > 0 }
+
+        logger.info { "Test Step $currentStep: End" }
+
+        logger.info { "Test Step ${++currentStep}: Validate first entry" }
+
+        UserEmpire::class.memberProperties.forEach {
+            logger.info { "Property: ${it.name} = ${it.get(empires[0])}" }
+//            assertTrue("Empire field is not present: ${it.name}") { it.get(empires[0]).toString().isNotBlank() }
+        }
+
+        logger.info { "Test Step $currentStep: End" }
     }
 }

@@ -238,7 +238,6 @@ gradle-app.setting
 !.idea/compiler.xml
 !.idea/copyright/**.xml
 !.idea/gradle.xml
-!.idea/jarRepositories.xml
 !.idea/kotlinc.xml
 !.idea/scopes/**.xml
 !.idea/vcs.xml
