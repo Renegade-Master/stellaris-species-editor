@@ -1,4 +1,5 @@
 import dao.empire.UserEmpire
+import mapper.AntlrEmpireMapper
 import mapper.UserEmpireMapper
 import mu.KotlinLogging
 import org.junit.jupiter.api.Assertions.assertEquals
@@ -6,9 +7,10 @@ import org.junit.jupiter.api.MethodOrderer
 import org.junit.jupiter.api.Order
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.TestMethodOrder
+import org.junit.jupiter.api.Assertions.assertTrue
+import org.junit.jupiter.api.Assertions.assertNotNull
+import util.EmpireParser
 import kotlin.reflect.full.memberProperties
-import kotlin.test.assertNotNull
-import kotlin.test.assertTrue
 
 @TestMethodOrder(MethodOrderer.OrderAnnotation::class)
 class ImportUserEmpireTest {
@@ -34,16 +36,18 @@ class ImportUserEmpireTest {
 
         logger.info { "Test Step ${++currentStep}: Import User Empire" }
 
-        val empires: ArrayList<UserEmpire> = UserEmpireMapper.parseEmpire(resource.readText())
-        assertTrue("There are no entries in the User Empire list.") { empires.size > 0 }
+        val mapper: EmpireParser = AntlrEmpireMapper()
+        val empires: ArrayList<UserEmpire> = mapper.parseEmpire(resource.readText())
+        assertTrue(empires.size > 0, "There are no entries in the User Empire list.")
 
         logger.info { "Test Step $currentStep: End" }
 
-        logger.info { "Test Step ${++currentStep}: Validate first entry" }
+        logger.info { "Test Step ${++currentStep}: Validate Empire properties" }
 
+        var currentSubStep: Int = 0
         UserEmpire::class.memberProperties.forEach {
-            logger.info { "Property: ${it.name} = ${it.get(empires[0])}" }
-//            assertTrue("Empire field is not present: ${it.name}") { it.get(empires[0]).toString().isNotBlank() }
+            logger.info { "Test Step ${currentStep}.${++currentSubStep}: Property [${it.name}] = [${it.get(empires[0])}]" }
+//            assertTrue(it.get(empires[0]).toString().isNotBlank(), "Empire field is not present: ${it.name}")
         }
 
         logger.info { "Test Step $currentStep: End" }
