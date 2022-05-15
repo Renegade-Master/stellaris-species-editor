@@ -5,7 +5,9 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
     kotlin("jvm") version "1.5.31"
     id("org.jetbrains.compose") version "1.0.0"
+    id("org.sonarqube") version "3.3"
     antlr
+    jacoco
 }
 
 group = "com.renegademaster"
@@ -20,10 +22,10 @@ repositories {
 dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin:2.13.3")
     implementation("io.github.microutils:kotlin-logging:2.1.21")
+    implementation("org.antlr:antlr4-runtime:4.10.1")
     implementation("org.jetbrains.kotlin:kotlin-reflect:1.6.0")
     implementation("org.slf4j:slf4j-simple:1.7.36")
     implementation(compose.desktop.currentOs)
-    implementation("org.antlr:antlr4-runtime:4.10.1")
 
     // Antlr
     antlr("org.antlr:antlr4:4.10.1")
@@ -33,6 +35,11 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+    finalizedBy(":jacocoTestReport")
+}
+
+tasks.sonarqube {
+    dependsOn(":test")
 }
 
 tasks.withType<KotlinCompile> {
@@ -48,4 +55,8 @@ compose.desktop {
             packageVersion = "2.0.0"
         }
     }
+}
+
+sonarqube.properties {
+    property("sonar.jacoco.reportsDirectory", "build/reports/jacoco")
 }

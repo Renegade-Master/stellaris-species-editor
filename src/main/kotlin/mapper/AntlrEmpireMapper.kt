@@ -3,6 +3,7 @@ package mapper
 import antlr.generated.StellarisLexer
 import antlr.generated.StellarisParser
 import dao.empire.UserEmpire
+import jdk.jshell.spi.ExecutionControl.NotImplementedException
 import org.antlr.v4.runtime.CharStreams
 import org.antlr.v4.runtime.CodePointCharStream
 import org.antlr.v4.runtime.CommonTokenStream
@@ -15,10 +16,12 @@ class AntlrEmpireMapper : EmpireParser {
 
         val parser: StellarisParser = StellarisParser(CommonTokenStream(StellarisLexer(input)))
         val config: StellarisParser.ConfigContext = parser.config()
-        val tree: ParseTree = parser
+//        val tree: ParseTree = parser
 
         val stellarisVisitor = StellarisVisitorImpl()
 
-        return stellarisVisitor.visit(tree);
+        throw NotImplementedException("Not implemented")
+
+        //return stellarisVisitor.visit(tree);
     }
 }
