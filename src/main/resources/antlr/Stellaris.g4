@@ -3,9 +3,11 @@ grammar Stellaris;
 options { caseInsensitive = true; }
 
 // Parser configuration
-empires: (empire)* EOF;
+empires returns [List<dao.empire.UserEmpire> empireList]
+@init{$empireList = new ArrayList<dao.empire.UserEmpire>();}: (empire)* EOF;
 
-empire returns [UserEmpire ue]: string OPERATOR map;
+empire returns [dao.empire.UserEmpire userEmpire]: string OPERATOR map
+{$userEmpire = new dao.empire.UserEmpire($map.text);};
 
 //config: (assignment)*;
 

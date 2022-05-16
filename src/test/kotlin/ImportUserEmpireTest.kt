@@ -36,7 +36,8 @@ class ImportUserEmpireTest {
 
         logger.info { "Test Step ${++currentStep}: Import User Empire" }
 
-        val mapper: EmpireParser = UserEmpireMapper()
+//        val mapper: EmpireParser = UserEmpireMapper()
+        val mapper: EmpireParser = AntlrEmpireMapper()
         val empires: ArrayList<UserEmpire> = mapper.parseEmpire(resource.readText())
         assertTrue(empires.size > 0, "There are no entries in the User Empire list.")
 
