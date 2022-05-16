@@ -1,5 +1,6 @@
 // Generated from /home/renegade/workspace/stellaris-species-editor/src/main/resources/antlr/Stellaris.g4 by ANTLR 4.10.1
 package antlr.generated;
+import dao.empire.UserEmpire;
 import org.antlr.v4.runtime.atn.*;
 import org.antlr.v4.runtime.dfa.DFA;
 import org.antlr.v4.runtime.*;
@@ -17,16 +18,16 @@ public class StellarisParser extends Parser {
 	protected static final PredictionContextCache _sharedContextCache =
 		new PredictionContextCache();
 	public static final int
-		OPERATOR=1, BLOCK_START=2, BLOCK_END=3, INT=4, PCT=5, REAL=6, DATE=7,
-		STRING=8, SYMBOL=9, WHITESPACE=10, LINE_COMMENT=11;
+		OPERATOR=1, BLOCK_START=2, BLOCK_END=3, TRAIT=4, INT=5, PCT=6, REAL=7,
+		DATE=8, STRING=9, SYMBOL=10, WHITESPACE=11, LINE_COMMENT=12;
 	public static final int
-		RULE_config = 0, RULE_assignment = 1, RULE_field = 2, RULE_value = 3,
-		RULE_symbol = 4, RULE_string = 5, RULE_integer = 6, RULE_real = 7, RULE_date = 8,
-		RULE_percent = 9, RULE_map = 10, RULE_array = 11;
+		RULE_empires = 0, RULE_empire = 1, RULE_assignment = 2, RULE_field = 3,
+		RULE_value = 4, RULE_trait = 5, RULE_symbol = 6, RULE_string = 7, RULE_integer = 8,
+		RULE_real = 9, RULE_date = 10, RULE_percent = 11, RULE_map = 12, RULE_array = 13;
 	private static String[] makeRuleNames() {
 		return new String[] {
-			"config", "assignment", "field", "value", "symbol", "string", "integer",
-			"real", "date", "percent", "map", "array"
+			"empires", "empire", "assignment", "field", "value", "trait", "symbol",
+			"string", "integer", "real", "date", "percent", "map", "array"
 		};
 	}
 	public static final String[] ruleNames = makeRuleNames();
@@ -39,8 +40,8 @@ public class StellarisParser extends Parser {
 	private static final String[] _LITERAL_NAMES = makeLiteralNames();
 	private static String[] makeSymbolicNames() {
 		return new String[] {
-			null, "OPERATOR", "BLOCK_START", "BLOCK_END", "INT", "PCT", "REAL", "DATE",
-			"STRING", "SYMBOL", "WHITESPACE", "LINE_COMMENT"
+			null, "OPERATOR", "BLOCK_START", "BLOCK_END", "TRAIT", "INT", "PCT",
+			"REAL", "DATE", "STRING", "SYMBOL", "WHITESPACE", "LINE_COMMENT"
 		};
 	}
 	private static final String[] _SYMBOLIC_NAMES = makeSymbolicNames();
@@ -94,53 +95,109 @@ public class StellarisParser extends Parser {
 		_interp = new ParserATNSimulator(this,_ATN,_decisionToDFA,_sharedContextCache);
 	}
 
-	public static class ConfigContext extends ParserRuleContext {
-		public List<AssignmentContext> assignment() {
-			return getRuleContexts(AssignmentContext.class);
+	public static class EmpiresContext extends ParserRuleContext {
+		public TerminalNode EOF() { return getToken(StellarisParser.EOF, 0); }
+		public List<EmpireContext> empire() {
+			return getRuleContexts(EmpireContext.class);
 		}
-		public AssignmentContext assignment(int i) {
-			return getRuleContext(AssignmentContext.class,i);
+		public EmpireContext empire(int i) {
+			return getRuleContext(EmpireContext.class,i);
 		}
-		public ConfigContext(ParserRuleContext parent, int invokingState) {
+		public EmpiresContext(ParserRuleContext parent, int invokingState) {
 			super(parent, invokingState);
 		}
-		@Override public int getRuleIndex() { return RULE_config; }
+		@Override public int getRuleIndex() { return RULE_empires; }
 		@Override
 		public void enterRule(ParseTreeListener listener) {
-			if ( listener instanceof StellarisListener ) ((StellarisListener)listener).enterConfig(this);
+			if ( listener instanceof StellarisListener ) ((StellarisListener)listener).enterEmpires(this);
 		}
 		@Override
 		public void exitRule(ParseTreeListener listener) {
-			if ( listener instanceof StellarisListener ) ((StellarisListener)listener).exitConfig(this);
+			if ( listener instanceof StellarisListener ) ((StellarisListener)listener).exitEmpires(this);
 		}
 		@Override
 		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
-			if ( visitor instanceof StellarisVisitor ) return ((StellarisVisitor<? extends T>)visitor).visitConfig(this);
+			if ( visitor instanceof StellarisVisitor ) return ((StellarisVisitor<? extends T>)visitor).visitEmpires(this);
 			else return visitor.visitChildren(this);
 		}
 	}
 
-	public final ConfigContext config() throws RecognitionException {
-		ConfigContext _localctx = new ConfigContext(_ctx, getState());
-		enterRule(_localctx, 0, RULE_config);
+	public final EmpiresContext empires() throws RecognitionException {
+		EmpiresContext _localctx = new EmpiresContext(_ctx, getState());
+		enterRule(_localctx, 0, RULE_empires);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(27);
+			setState(31);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
-			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << INT) | (1L << STRING) | (1L << SYMBOL))) != 0)) {
+			while (_la==STRING) {
 				{
 				{
-				setState(24);
-				assignment();
+				setState(28);
+				empire();
 				}
 				}
-				setState(29);
+				setState(33);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
+			setState(34);
+			match(EOF);
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class EmpireContext extends ParserRuleContext {
+		public UserEmpire ue;
+		public StringContext string() {
+			return getRuleContext(StringContext.class,0);
+		}
+		public TerminalNode OPERATOR() { return getToken(StellarisParser.OPERATOR, 0); }
+		public MapContext map() {
+			return getRuleContext(MapContext.class,0);
+		}
+		public EmpireContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_empire; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof StellarisListener ) ((StellarisListener)listener).enterEmpire(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof StellarisListener ) ((StellarisListener)listener).exitEmpire(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof StellarisVisitor ) return ((StellarisVisitor<? extends T>)visitor).visitEmpire(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final EmpireContext empire() throws RecognitionException {
+		EmpireContext _localctx = new EmpireContext(_ctx, getState());
+		enterRule(_localctx, 2, RULE_empire);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(36);
+			string();
+			setState(37);
+			match(OPERATOR);
+			setState(38);
+			map();
 			}
 		}
 		catch (RecognitionException re) {
@@ -183,15 +240,15 @@ public class StellarisParser extends Parser {
 
 	public final AssignmentContext assignment() throws RecognitionException {
 		AssignmentContext _localctx = new AssignmentContext(_ctx, getState());
-		enterRule(_localctx, 2, RULE_assignment);
+		enterRule(_localctx, 4, RULE_assignment);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(30);
+			setState(40);
 			field();
-			setState(31);
+			setState(41);
 			match(OPERATOR);
-			setState(32);
+			setState(42);
 			value();
 			}
 		}
@@ -234,22 +291,22 @@ public class StellarisParser extends Parser {
 
 	public final FieldContext field() throws RecognitionException {
 		FieldContext _localctx = new FieldContext(_ctx, getState());
-		enterRule(_localctx, 4, RULE_field);
+		enterRule(_localctx, 6, RULE_field);
 		try {
-			setState(36);
+			setState(46);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,1,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(34);
+				setState(44);
 				string();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(35);
+				setState(45);
 				symbol();
 				}
 				break;
@@ -312,67 +369,109 @@ public class StellarisParser extends Parser {
 
 	public final ValueContext value() throws RecognitionException {
 		ValueContext _localctx = new ValueContext(_ctx, getState());
-		enterRule(_localctx, 6, RULE_value);
+		enterRule(_localctx, 8, RULE_value);
 		try {
-			setState(46);
+			setState(56);
 			_errHandler.sync(this);
 			switch ( getInterpreter().adaptivePredict(_input,2,_ctx) ) {
 			case 1:
 				enterOuterAlt(_localctx, 1);
 				{
-				setState(38);
+				setState(48);
 				integer();
 				}
 				break;
 			case 2:
 				enterOuterAlt(_localctx, 2);
 				{
-				setState(39);
+				setState(49);
 				percent();
 				}
 				break;
 			case 3:
 				enterOuterAlt(_localctx, 3);
 				{
-				setState(40);
+				setState(50);
 				real();
 				}
 				break;
 			case 4:
 				enterOuterAlt(_localctx, 4);
 				{
-				setState(41);
+				setState(51);
 				date();
 				}
 				break;
 			case 5:
 				enterOuterAlt(_localctx, 5);
 				{
-				setState(42);
+				setState(52);
 				string();
 				}
 				break;
 			case 6:
 				enterOuterAlt(_localctx, 6);
 				{
-				setState(43);
+				setState(53);
 				symbol();
 				}
 				break;
 			case 7:
 				enterOuterAlt(_localctx, 7);
 				{
-				setState(44);
+				setState(54);
 				map();
 				}
 				break;
 			case 8:
 				enterOuterAlt(_localctx, 8);
 				{
-				setState(45);
+				setState(55);
 				array();
 				}
 				break;
+			}
+		}
+		catch (RecognitionException re) {
+			_localctx.exception = re;
+			_errHandler.reportError(this, re);
+			_errHandler.recover(this, re);
+		}
+		finally {
+			exitRule();
+		}
+		return _localctx;
+	}
+
+	public static class TraitContext extends ParserRuleContext {
+		public TerminalNode TRAIT() { return getToken(StellarisParser.TRAIT, 0); }
+		public TraitContext(ParserRuleContext parent, int invokingState) {
+			super(parent, invokingState);
+		}
+		@Override public int getRuleIndex() { return RULE_trait; }
+		@Override
+		public void enterRule(ParseTreeListener listener) {
+			if ( listener instanceof StellarisListener ) ((StellarisListener)listener).enterTrait(this);
+		}
+		@Override
+		public void exitRule(ParseTreeListener listener) {
+			if ( listener instanceof StellarisListener ) ((StellarisListener)listener).exitTrait(this);
+		}
+		@Override
+		public <T> T accept(ParseTreeVisitor<? extends T> visitor) {
+			if ( visitor instanceof StellarisVisitor ) return ((StellarisVisitor<? extends T>)visitor).visitTrait(this);
+			else return visitor.visitChildren(this);
+		}
+	}
+
+	public final TraitContext trait() throws RecognitionException {
+		TraitContext _localctx = new TraitContext(_ctx, getState());
+		enterRule(_localctx, 10, RULE_trait);
+		try {
+			enterOuterAlt(_localctx, 1);
+			{
+			setState(58);
+			match(TRAIT);
 			}
 		}
 		catch (RecognitionException re) {
@@ -411,12 +510,12 @@ public class StellarisParser extends Parser {
 
 	public final SymbolContext symbol() throws RecognitionException {
 		SymbolContext _localctx = new SymbolContext(_ctx, getState());
-		enterRule(_localctx, 8, RULE_symbol);
+		enterRule(_localctx, 12, RULE_symbol);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(48);
+			setState(60);
 			_la = _input.LA(1);
 			if ( !((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << INT) | (1L << STRING) | (1L << SYMBOL))) != 0)) ) {
 			_errHandler.recoverInline(this);
@@ -462,11 +561,11 @@ public class StellarisParser extends Parser {
 
 	public final StringContext string() throws RecognitionException {
 		StringContext _localctx = new StringContext(_ctx, getState());
-		enterRule(_localctx, 10, RULE_string);
+		enterRule(_localctx, 14, RULE_string);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(50);
+			setState(62);
 			match(STRING);
 			}
 		}
@@ -504,11 +603,11 @@ public class StellarisParser extends Parser {
 
 	public final IntegerContext integer() throws RecognitionException {
 		IntegerContext _localctx = new IntegerContext(_ctx, getState());
-		enterRule(_localctx, 12, RULE_integer);
+		enterRule(_localctx, 16, RULE_integer);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(52);
+			setState(64);
 			match(INT);
 			}
 		}
@@ -546,11 +645,11 @@ public class StellarisParser extends Parser {
 
 	public final RealContext real() throws RecognitionException {
 		RealContext _localctx = new RealContext(_ctx, getState());
-		enterRule(_localctx, 14, RULE_real);
+		enterRule(_localctx, 18, RULE_real);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(54);
+			setState(66);
 			match(REAL);
 			}
 		}
@@ -588,11 +687,11 @@ public class StellarisParser extends Parser {
 
 	public final DateContext date() throws RecognitionException {
 		DateContext _localctx = new DateContext(_ctx, getState());
-		enterRule(_localctx, 16, RULE_date);
+		enterRule(_localctx, 20, RULE_date);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(56);
+			setState(68);
 			match(DATE);
 			}
 		}
@@ -630,11 +729,11 @@ public class StellarisParser extends Parser {
 
 	public final PercentContext percent() throws RecognitionException {
 		PercentContext _localctx = new PercentContext(_ctx, getState());
-		enterRule(_localctx, 18, RULE_percent);
+		enterRule(_localctx, 22, RULE_percent);
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(58);
+			setState(70);
 			match(PCT);
 			}
 		}
@@ -679,28 +778,28 @@ public class StellarisParser extends Parser {
 
 	public final MapContext map() throws RecognitionException {
 		MapContext _localctx = new MapContext(_ctx, getState());
-		enterRule(_localctx, 20, RULE_map);
+		enterRule(_localctx, 24, RULE_map);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(60);
+			setState(72);
 			match(BLOCK_START);
-			setState(64);
+			setState(76);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			while ((((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << INT) | (1L << STRING) | (1L << SYMBOL))) != 0)) {
 				{
 				{
-				setState(61);
+				setState(73);
 				assignment();
 				}
 				}
-				setState(66);
+				setState(78);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			}
-			setState(67);
+			setState(79);
 			match(BLOCK_END);
 			}
 		}
@@ -745,28 +844,28 @@ public class StellarisParser extends Parser {
 
 	public final ArrayContext array() throws RecognitionException {
 		ArrayContext _localctx = new ArrayContext(_ctx, getState());
-		enterRule(_localctx, 22, RULE_array);
+		enterRule(_localctx, 26, RULE_array);
 		int _la;
 		try {
 			enterOuterAlt(_localctx, 1);
 			{
-			setState(69);
+			setState(81);
 			match(BLOCK_START);
-			setState(71);
+			setState(83);
 			_errHandler.sync(this);
 			_la = _input.LA(1);
 			do {
 				{
 				{
-				setState(70);
+				setState(82);
 				value();
 				}
 				}
-				setState(73);
+				setState(85);
 				_errHandler.sync(this);
 				_la = _input.LA(1);
 			} while ( (((_la) & ~0x3f) == 0 && ((1L << _la) & ((1L << BLOCK_START) | (1L << INT) | (1L << PCT) | (1L << REAL) | (1L << DATE) | (1L << STRING) | (1L << SYMBOL))) != 0) );
-			setState(75);
+			setState(87);
 			match(BLOCK_END);
 			}
 		}
@@ -782,50 +881,55 @@ public class StellarisParser extends Parser {
 	}
 
 	public static final String _serializedATN =
-		"\u0004\u0001\u000bN\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
+		"\u0004\u0001\fZ\u0002\u0000\u0007\u0000\u0002\u0001\u0007\u0001\u0002"+
 		"\u0002\u0007\u0002\u0002\u0003\u0007\u0003\u0002\u0004\u0007\u0004\u0002"+
 		"\u0005\u0007\u0005\u0002\u0006\u0007\u0006\u0002\u0007\u0007\u0007\u0002"+
-		"\b\u0007\b\u0002\t\u0007\t\u0002\n\u0007\n\u0002\u000b\u0007\u000b\u0001"+
-		"\u0000\u0005\u0000\u001a\b\u0000\n\u0000\f\u0000\u001d\t\u0000\u0001\u0001"+
-		"\u0001\u0001\u0001\u0001\u0001\u0001\u0001\u0002\u0001\u0002\u0003\u0002"+
-		"%\b\u0002\u0001\u0003\u0001\u0003\u0001\u0003\u0001\u0003\u0001\u0003"+
-		"\u0001\u0003\u0001\u0003\u0001\u0003\u0003\u0003/\b\u0003\u0001\u0004"+
-		"\u0001\u0004\u0001\u0005\u0001\u0005\u0001\u0006\u0001\u0006\u0001\u0007"+
-		"\u0001\u0007\u0001\b\u0001\b\u0001\t\u0001\t\u0001\n\u0001\n\u0005\n?"+
-		"\b\n\n\n\f\nB\t\n\u0001\n\u0001\n\u0001\u000b\u0001\u000b\u0004\u000b"+
-		"H\b\u000b\u000b\u000b\f\u000bI\u0001\u000b\u0001\u000b\u0001\u000b\u0000"+
-		"\u0000\f\u0000\u0002\u0004\u0006\b\n\f\u000e\u0010\u0012\u0014\u0016\u0000"+
-		"\u0001\u0002\u0000\u0004\u0004\b\tL\u0000\u001b\u0001\u0000\u0000\u0000"+
-		"\u0002\u001e\u0001\u0000\u0000\u0000\u0004$\u0001\u0000\u0000\u0000\u0006"+
-		".\u0001\u0000\u0000\u0000\b0\u0001\u0000\u0000\u0000\n2\u0001\u0000\u0000"+
-		"\u0000\f4\u0001\u0000\u0000\u0000\u000e6\u0001\u0000\u0000\u0000\u0010"+
-		"8\u0001\u0000\u0000\u0000\u0012:\u0001\u0000\u0000\u0000\u0014<\u0001"+
-		"\u0000\u0000\u0000\u0016E\u0001\u0000\u0000\u0000\u0018\u001a\u0003\u0002"+
-		"\u0001\u0000\u0019\u0018\u0001\u0000\u0000\u0000\u001a\u001d\u0001\u0000"+
-		"\u0000\u0000\u001b\u0019\u0001\u0000\u0000\u0000\u001b\u001c\u0001\u0000"+
-		"\u0000\u0000\u001c\u0001\u0001\u0000\u0000\u0000\u001d\u001b\u0001\u0000"+
-		"\u0000\u0000\u001e\u001f\u0003\u0004\u0002\u0000\u001f \u0005\u0001\u0000"+
-		"\u0000 !\u0003\u0006\u0003\u0000!\u0003\u0001\u0000\u0000\u0000\"%\u0003"+
-		"\n\u0005\u0000#%\u0003\b\u0004\u0000$\"\u0001\u0000\u0000\u0000$#\u0001"+
-		"\u0000\u0000\u0000%\u0005\u0001\u0000\u0000\u0000&/\u0003\f\u0006\u0000"+
-		"\'/\u0003\u0012\t\u0000(/\u0003\u000e\u0007\u0000)/\u0003\u0010\b\u0000"+
-		"*/\u0003\n\u0005\u0000+/\u0003\b\u0004\u0000,/\u0003\u0014\n\u0000-/\u0003"+
-		"\u0016\u000b\u0000.&\u0001\u0000\u0000\u0000.\'\u0001\u0000\u0000\u0000"+
-		".(\u0001\u0000\u0000\u0000.)\u0001\u0000\u0000\u0000.*\u0001\u0000\u0000"+
-		"\u0000.+\u0001\u0000\u0000\u0000.,\u0001\u0000\u0000\u0000.-\u0001\u0000"+
-		"\u0000\u0000/\u0007\u0001\u0000\u0000\u000001\u0007\u0000\u0000\u0000"+
-		"1\t\u0001\u0000\u0000\u000023\u0005\b\u0000\u00003\u000b\u0001\u0000\u0000"+
-		"\u000045\u0005\u0004\u0000\u00005\r\u0001\u0000\u0000\u000067\u0005\u0006"+
-		"\u0000\u00007\u000f\u0001\u0000\u0000\u000089\u0005\u0007\u0000\u0000"+
-		"9\u0011\u0001\u0000\u0000\u0000:;\u0005\u0005\u0000\u0000;\u0013\u0001"+
-		"\u0000\u0000\u0000<@\u0005\u0002\u0000\u0000=?\u0003\u0002\u0001\u0000"+
-		">=\u0001\u0000\u0000\u0000?B\u0001\u0000\u0000\u0000@>\u0001\u0000\u0000"+
-		"\u0000@A\u0001\u0000\u0000\u0000AC\u0001\u0000\u0000\u0000B@\u0001\u0000"+
-		"\u0000\u0000CD\u0005\u0003\u0000\u0000D\u0015\u0001\u0000\u0000\u0000"+
-		"EG\u0005\u0002\u0000\u0000FH\u0003\u0006\u0003\u0000GF\u0001\u0000\u0000"+
-		"\u0000HI\u0001\u0000\u0000\u0000IG\u0001\u0000\u0000\u0000IJ\u0001\u0000"+
-		"\u0000\u0000JK\u0001\u0000\u0000\u0000KL\u0005\u0003\u0000\u0000L\u0017"+
-		"\u0001\u0000\u0000\u0000\u0005\u001b$.@I";
+		"\b\u0007\b\u0002\t\u0007\t\u0002\n\u0007\n\u0002\u000b\u0007\u000b\u0002"+
+		"\f\u0007\f\u0002\r\u0007\r\u0001\u0000\u0005\u0000\u001e\b\u0000\n\u0000"+
+		"\f\u0000!\t\u0000\u0001\u0000\u0001\u0000\u0001\u0001\u0001\u0001\u0001"+
+		"\u0001\u0001\u0001\u0001\u0002\u0001\u0002\u0001\u0002\u0001\u0002\u0001"+
+		"\u0003\u0001\u0003\u0003\u0003/\b\u0003\u0001\u0004\u0001\u0004\u0001"+
+		"\u0004\u0001\u0004\u0001\u0004\u0001\u0004\u0001\u0004\u0001\u0004\u0003"+
+		"\u00049\b\u0004\u0001\u0005\u0001\u0005\u0001\u0006\u0001\u0006\u0001"+
+		"\u0007\u0001\u0007\u0001\b\u0001\b\u0001\t\u0001\t\u0001\n\u0001\n\u0001"+
+		"\u000b\u0001\u000b\u0001\f\u0001\f\u0005\fK\b\f\n\f\f\fN\t\f\u0001\f\u0001"+
+		"\f\u0001\r\u0001\r\u0004\rT\b\r\u000b\r\f\rU\u0001\r\u0001\r\u0001\r\u0000"+
+		"\u0000\u000e\u0000\u0002\u0004\u0006\b\n\f\u000e\u0010\u0012\u0014\u0016"+
+		"\u0018\u001a\u0000\u0001\u0002\u0000\u0005\u0005\t\nV\u0000\u001f\u0001"+
+		"\u0000\u0000\u0000\u0002$\u0001\u0000\u0000\u0000\u0004(\u0001\u0000\u0000"+
+		"\u0000\u0006.\u0001\u0000\u0000\u0000\b8\u0001\u0000\u0000\u0000\n:\u0001"+
+		"\u0000\u0000\u0000\f<\u0001\u0000\u0000\u0000\u000e>\u0001\u0000\u0000"+
+		"\u0000\u0010@\u0001\u0000\u0000\u0000\u0012B\u0001\u0000\u0000\u0000\u0014"+
+		"D\u0001\u0000\u0000\u0000\u0016F\u0001\u0000\u0000\u0000\u0018H\u0001"+
+		"\u0000\u0000\u0000\u001aQ\u0001\u0000\u0000\u0000\u001c\u001e\u0003\u0002"+
+		"\u0001\u0000\u001d\u001c\u0001\u0000\u0000\u0000\u001e!\u0001\u0000\u0000"+
+		"\u0000\u001f\u001d\u0001\u0000\u0000\u0000\u001f \u0001\u0000\u0000\u0000"+
+		" \"\u0001\u0000\u0000\u0000!\u001f\u0001\u0000\u0000\u0000\"#\u0005\u0000"+
+		"\u0000\u0001#\u0001\u0001\u0000\u0000\u0000$%\u0003\u000e\u0007\u0000"+
+		"%&\u0005\u0001\u0000\u0000&\'\u0003\u0018\f\u0000\'\u0003\u0001\u0000"+
+		"\u0000\u0000()\u0003\u0006\u0003\u0000)*\u0005\u0001\u0000\u0000*+\u0003"+
+		"\b\u0004\u0000+\u0005\u0001\u0000\u0000\u0000,/\u0003\u000e\u0007\u0000"+
+		"-/\u0003\f\u0006\u0000.,\u0001\u0000\u0000\u0000.-\u0001\u0000\u0000\u0000"+
+		"/\u0007\u0001\u0000\u0000\u000009\u0003\u0010\b\u000019\u0003\u0016\u000b"+
+		"\u000029\u0003\u0012\t\u000039\u0003\u0014\n\u000049\u0003\u000e\u0007"+
+		"\u000059\u0003\f\u0006\u000069\u0003\u0018\f\u000079\u0003\u001a\r\u0000"+
+		"80\u0001\u0000\u0000\u000081\u0001\u0000\u0000\u000082\u0001\u0000\u0000"+
+		"\u000083\u0001\u0000\u0000\u000084\u0001\u0000\u0000\u000085\u0001\u0000"+
+		"\u0000\u000086\u0001\u0000\u0000\u000087\u0001\u0000\u0000\u00009\t\u0001"+
+		"\u0000\u0000\u0000:;\u0005\u0004\u0000\u0000;\u000b\u0001\u0000\u0000"+
+		"\u0000<=\u0007\u0000\u0000\u0000=\r\u0001\u0000\u0000\u0000>?\u0005\t"+
+		"\u0000\u0000?\u000f\u0001\u0000\u0000\u0000@A\u0005\u0005\u0000\u0000"+
+		"A\u0011\u0001\u0000\u0000\u0000BC\u0005\u0007\u0000\u0000C\u0013\u0001"+
+		"\u0000\u0000\u0000DE\u0005\b\u0000\u0000E\u0015\u0001\u0000\u0000\u0000"+
+		"FG\u0005\u0006\u0000\u0000G\u0017\u0001\u0000\u0000\u0000HL\u0005\u0002"+
+		"\u0000\u0000IK\u0003\u0004\u0002\u0000JI\u0001\u0000\u0000\u0000KN\u0001"+
+		"\u0000\u0000\u0000LJ\u0001\u0000\u0000\u0000LM\u0001\u0000\u0000\u0000"+
+		"MO\u0001\u0000\u0000\u0000NL\u0001\u0000\u0000\u0000OP\u0005\u0003\u0000"+
+		"\u0000P\u0019\u0001\u0000\u0000\u0000QS\u0005\u0002\u0000\u0000RT\u0003"+
+		"\b\u0004\u0000SR\u0001\u0000\u0000\u0000TU\u0001\u0000\u0000\u0000US\u0001"+
+		"\u0000\u0000\u0000UV\u0001\u0000\u0000\u0000VW\u0001\u0000\u0000\u0000"+
+		"WX\u0005\u0003\u0000\u0000X\u001b\u0001\u0000\u0000\u0000\u0005\u001f"+
+		".8LU";
 	public static final ATN _ATN =
 		new ATNDeserializer().deserialize(_serializedATN.toCharArray());
 	static {

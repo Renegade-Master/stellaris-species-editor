@@ -1,27 +1,42 @@
 grammar Stellaris;
 
+options { caseInsensitive = true; }
+
 // Parser configuration
-config: (assignment)*;
+empires: (empire)* EOF;
+
+empire returns [UserEmpire ue]: string OPERATOR map;
+
+//config: (assignment)*;
 
 assignment: field OPERATOR value;
 field: string | symbol;
 
 value: integer | percent | real | date | string | symbol | map | array;
 
+// Stellaris Specific
+trait: TRAIT;
+
+// Generic
 symbol: STRING | INT | SYMBOL;
 string: STRING;
 integer: INT;
 real: REAL;
 date: DATE;
 percent: PCT;
+
 map: BLOCK_START (assignment)* BLOCK_END;
 array: BLOCK_START value+ BLOCK_END;
 
 // Lexer configuration
-OPERATOR: '=' | '<>' | '>' | '<' | '<=' | '>=' ;
+OPERATOR: '=' | '<>' | '>' | '<' | '<=' | '>=';
 BLOCK_START: '{';
 BLOCK_END: '}';
 
+// Stellaris Specific
+TRAIT: 'trait_'SYMBOL;
+
+// Generic
 INT: NEGATION?[0-9]+;
 PCT: NEGATION?[0-9]+'%';
 REAL: NEGATION?[0-9]+'.'[0-9]+;

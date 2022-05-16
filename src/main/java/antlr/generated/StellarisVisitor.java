@@ -11,11 +11,17 @@ import org.antlr.v4.runtime.tree.ParseTreeVisitor;
  */
 public interface StellarisVisitor<T> extends ParseTreeVisitor<T> {
 	/**
-	 * Visit a parse tree produced by {@link StellarisParser#config}.
+	 * Visit a parse tree produced by {@link StellarisParser#empires}.
 	 * @param ctx the parse tree
 	 * @return the visitor result
 	 */
-	T visitConfig(StellarisParser.ConfigContext ctx);
+	T visitEmpires(StellarisParser.EmpiresContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link StellarisParser#empire}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitEmpire(StellarisParser.EmpireContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link StellarisParser#assignment}.
 	 * @param ctx the parse tree
@@ -34,6 +40,12 @@ public interface StellarisVisitor<T> extends ParseTreeVisitor<T> {
 	 * @return the visitor result
 	 */
 	T visitValue(StellarisParser.ValueContext ctx);
+	/**
+	 * Visit a parse tree produced by {@link StellarisParser#trait}.
+	 * @param ctx the parse tree
+	 * @return the visitor result
+	 */
+	T visitTrait(StellarisParser.TraitContext ctx);
 	/**
 	 * Visit a parse tree produced by {@link StellarisParser#symbol}.
 	 * @param ctx the parse tree

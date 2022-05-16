@@ -11,6 +11,12 @@ selection for Stellaris Species file.
 
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=Renegade-Master_stellaris-species-editor&metric=alert_status)](https://sonarcloud.io/summary/new_code?id=Renegade-Master_stellaris-species-editor)
 
+## References
+
+Thank you to the following developers for their existing work which helped me to develop this program:
+
+- [rikbrown/klausewitz-parser](https://github.com/rikbrown/klausewitz-parser)
+
 ## Contributions
 
 Contributions are encouraged, and welcome.  

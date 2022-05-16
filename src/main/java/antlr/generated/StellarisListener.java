@@ -8,15 +8,25 @@ import org.antlr.v4.runtime.tree.ParseTreeListener;
  */
 public interface StellarisListener extends ParseTreeListener {
 	/**
-	 * Enter a parse tree produced by {@link StellarisParser#config}.
+	 * Enter a parse tree produced by {@link StellarisParser#empires}.
 	 * @param ctx the parse tree
 	 */
-	void enterConfig(StellarisParser.ConfigContext ctx);
+	void enterEmpires(StellarisParser.EmpiresContext ctx);
 	/**
-	 * Exit a parse tree produced by {@link StellarisParser#config}.
+	 * Exit a parse tree produced by {@link StellarisParser#empires}.
 	 * @param ctx the parse tree
 	 */
-	void exitConfig(StellarisParser.ConfigContext ctx);
+	void exitEmpires(StellarisParser.EmpiresContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link StellarisParser#empire}.
+	 * @param ctx the parse tree
+	 */
+	void enterEmpire(StellarisParser.EmpireContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link StellarisParser#empire}.
+	 * @param ctx the parse tree
+	 */
+	void exitEmpire(StellarisParser.EmpireContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link StellarisParser#assignment}.
 	 * @param ctx the parse tree
@@ -47,6 +57,16 @@ public interface StellarisListener extends ParseTreeListener {
 	 * @param ctx the parse tree
 	 */
 	void exitValue(StellarisParser.ValueContext ctx);
+	/**
+	 * Enter a parse tree produced by {@link StellarisParser#trait}.
+	 * @param ctx the parse tree
+	 */
+	void enterTrait(StellarisParser.TraitContext ctx);
+	/**
+	 * Exit a parse tree produced by {@link StellarisParser#trait}.
+	 * @param ctx the parse tree
+	 */
+	void exitTrait(StellarisParser.TraitContext ctx);
 	/**
 	 * Enter a parse tree produced by {@link StellarisParser#symbol}.
 	 * @param ctx the parse tree

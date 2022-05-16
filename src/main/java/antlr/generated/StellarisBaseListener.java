@@ -16,13 +16,25 @@ public class StellarisBaseListener implements StellarisListener {
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void enterConfig(StellarisParser.ConfigContext ctx) { }
+	@Override public void enterEmpires(StellarisParser.EmpiresContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
 	 * <p>The default implementation does nothing.</p>
 	 */
-	@Override public void exitConfig(StellarisParser.ConfigContext ctx) { }
+	@Override public void exitEmpires(StellarisParser.EmpiresContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterEmpire(StellarisParser.EmpireContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitEmpire(StellarisParser.EmpireContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *
@@ -59,6 +71,18 @@ public class StellarisBaseListener implements StellarisListener {
 	 * <p>The default implementation does nothing.</p>
 	 */
 	@Override public void exitValue(StellarisParser.ValueContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void enterTrait(StellarisParser.TraitContext ctx) { }
+	/**
+	 * {@inheritDoc}
+	 *
+	 * <p>The default implementation does nothing.</p>
+	 */
+	@Override public void exitTrait(StellarisParser.TraitContext ctx) { }
 	/**
 	 * {@inheritDoc}
 	 *

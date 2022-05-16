@@ -7,7 +7,6 @@ import jdk.jshell.spi.ExecutionControl.NotImplementedException
 import org.antlr.v4.runtime.CharStreams
 import org.antlr.v4.runtime.CodePointCharStream
 import org.antlr.v4.runtime.CommonTokenStream
-import org.antlr.v4.runtime.tree.ParseTree
 import util.EmpireParser
 
 class AntlrEmpireMapper : EmpireParser {
@@ -18,7 +17,7 @@ class AntlrEmpireMapper : EmpireParser {
         val config: StellarisParser.ConfigContext = parser.config()
 //        val tree: ParseTree = parser
 
-        val stellarisVisitor = StellarisVisitorImpl()
+        val stellarisVisitor = StellarisVisitor()
 
         throw NotImplementedException("Not implemented")
 
